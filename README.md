@@ -27,11 +27,11 @@ table nobody reads.
 
 | Repo | Version | Release | Tags on main | Unreleased | CI | PRs | Unmerged | Published |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| nettail | 0.2.1 | v0.2.1 | all 5 | 1 commit | success | 1 | tag-on-main-guard (+1/-0) | PyPI 0.2.1, GHCR 0.2.1, Docker Hub 0.2.1 |
-| netflume | 0.2.1 | v0.2.1 | 2 of 3 | 1 commit | success | 1 | tag-on-main-guard (+1/-0) | PyPI 0.2.1 |
-| lanname | 0.2.1 | v0.2.1 | all 3 | none | success | 1 | tag-on-main-guard (+1/-0) | PyPI 0.2.1 |
-| readerboard | 0.1.4 | v0.1.4 | all 4 | none | success | 1 | tag-on-main-guard (+2/-0) | PyPI 0.1.4, GHCR 0.1.4, Docker Hub 0.1.4 |
-| bravia-http-remote | 1.1.0 | v1.1.0 | all 2 | 1 commit | success | 1 | split-app-js (+2/-3), tag-on-main-guard (+2/-0) | GHCR 1.1.0, Docker Hub 1.1.0 |
+| nettail | 0.2.1 | v0.2.1 | all 5 | 2 commits | success | 0 | none | PyPI 0.2.1, GHCR 0.2.1, Docker Hub 0.2.1 |
+| netflume | 0.2.1 | v0.2.1 | 2 of 3 | 2 commits | success | 0 | none | PyPI 0.2.1 |
+| lanname | 0.2.1 | v0.2.1 | all 3 | 1 commit | success | 0 | none | PyPI 0.2.1 |
+| readerboard | 0.1.4 | v0.1.4 | all 4 | 1 commit | success | 2 | dependabot/docker/python-3.14.7-slim (+1/-0), dependabot/github_actions/actions/checkout-7 (+1/-0) | PyPI 0.1.4, GHCR 0.1.4, Docker Hub 0.1.4 |
+| bravia-http-remote | 1.1.0 | v1.1.0 | all 2 | 2 commits | success | 3 | dependabot/docker/python-3.14.7-slim (+1/-0), dependabot/github_actions/actions/download-artifact-8.0.1 (+1/-0), dependabot/github_actions/actions/setup-node-7.0.0 (+1/-0), split-app-js (+2/-4) | GHCR 1.1.0, Docker Hub 1.1.0 |
 
 Worth knowing:
 
