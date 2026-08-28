@@ -77,7 +77,7 @@ REPOS = [
 ]
 
 
-# -- talking to the outside ---------------------------------------------
+# Talking to the outside.
 
 def token() -> str:
     """The GitHub token, from the environment or from gh."""
@@ -166,7 +166,7 @@ def image_tags(image: str) -> list[str]:
     return sorted(found.get("tags", [])) if found else []
 
 
-# -- reading a version out of a file ------------------------------------
+# Reading a version out of a file.
 
 def read_version(text: str, kind: str) -> str | None:
     if kind == "pyproject":
@@ -182,7 +182,7 @@ def read_version(text: str, kind: str) -> str | None:
     raise ValueError(kind)
 
 
-# -- the sweep ----------------------------------------------------------
+# The sweep itself.
 
 @dataclass
 class Result:
@@ -303,7 +303,7 @@ def sweep_one(repo: Repo, tok: str) -> Result:
     return out
 
 
-# -- output -------------------------------------------------------------
+# Saying what it found.
 
 COLUMNS = [
     ("Repo", "repo"), ("Version", "version"), ("Release", "release"),
