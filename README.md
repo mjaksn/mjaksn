@@ -1,0 +1,47 @@
+# mjaksn
+
+Small networking and hardware tools. Mostly Python, mostly no dependencies,
+and each one built to be read as well as run.
+
+| Project | What it is | Latest | Build |
+| --- | --- | --- | --- |
+| [nettail](https://github.com/mjaksn/nettail) | `tail -f` for your network: a NetFlow and IPFIX collector that prints flows with hostnames, colour and a live status bar | [![PyPI](https://img.shields.io/pypi/v/nettail)](https://pypi.org/project/nettail/) | [![CI](https://github.com/mjaksn/nettail/actions/workflows/ci.yml/badge.svg)](https://github.com/mjaksn/nettail/actions/workflows/ci.yml) |
+| [netflume](https://github.com/mjaksn/netflume) | NetFlow v5, NetFlow v9 and IPFIX collection and parsing, as a library | [![PyPI](https://img.shields.io/pypi/v/netflume)](https://pypi.org/project/netflume/) | [![CI](https://github.com/mjaksn/netflume/actions/workflows/ci.yml/badge.svg)](https://github.com/mjaksn/netflume/actions/workflows/ci.yml) |
+| [lanname](https://github.com/mjaksn/lanname) | Address to hostname lookup on a local network: reverse DNS, mDNS and NetBIOS, cached and non-blocking | [![PyPI](https://img.shields.io/pypi/v/lanname)](https://pypi.org/project/lanname/) | [![CI](https://github.com/mjaksn/lanname/actions/workflows/ci.yml/badge.svg)](https://github.com/mjaksn/lanname/actions/workflows/ci.yml) |
+| [readerboard](https://github.com/mjaksn/readerboard) | An HTTP service for BetaBrite and Alpha protocol LED signs, with alerts, scheduling and clock sync | [![PyPI](https://img.shields.io/pypi/v/readerboard)](https://pypi.org/project/readerboard/) | [![CI](https://github.com/mjaksn/readerboard/actions/workflows/ci.yml/badge.svg)](https://github.com/mjaksn/readerboard/actions/workflows/ci.yml) |
+| [bravia-http-remote](https://github.com/mjaksn/bravia-http-remote) | A single-page console for controlling a Sony Bravia display over your network | [![Release](https://img.shields.io/github/v/release/mjaksn/bravia-http-remote)](https://github.com/mjaksn/bravia-http-remote/releases/latest) | [![CI](https://github.com/mjaksn/bravia-http-remote/actions/workflows/ci.yml/badge.svg)](https://github.com/mjaksn/bravia-http-remote/actions/workflows/ci.yml) |
+
+## Where everything stands
+
+The badges above say whether the last build passed and what the registries
+serve. They cannot say whether those two agree with each other, or whether a
+tag is on the branch it claims to be on, so the table below asks.
+
+[`scripts/sweep.py`](scripts/sweep.py) reads it fresh from GitHub, PyPI and
+both container registries every morning and writes what it found here. It is
+standard library only and clones nothing. When something is genuinely wrong,
+as opposed to merely untidy, the run fails rather than quietly updating a
+table nobody reads.
+
+<!-- sweep:start -->
+
+| Repo | Version | Release | Tags on main | Unreleased | CI | PRs | Unmerged | Published |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| nettail | 0.2.1 | v0.2.1 | all 5 | 1 commit | success | 1 | tag-on-main-guard (+1/-0) | PyPI 0.2.1, GHCR 0.2.1, Docker Hub 0.2.1 |
+| netflume | 0.2.1 | v0.2.1 | 2 of 3 | 1 commit | success | 1 | tag-on-main-guard (+1/-0) | PyPI 0.2.1 |
+| lanname | 0.2.1 | v0.2.1 | all 3 | none | success | 1 | tag-on-main-guard (+1/-0) | PyPI 0.2.1 |
+| readerboard | 0.1.4 | v0.1.4 | all 4 | none | success | 1 | tag-on-main-guard (+2/-0) | PyPI 0.1.4, GHCR 0.1.4, Docker Hub 0.1.4 |
+| bravia-http-remote | 1.1.0 | v1.1.0 | all 2 | 1 commit | success | 1 | split-app-js (+2/-3), tag-on-main-guard (+2/-0) | GHCR 1.1.0, Docker Hub 1.1.0 |
+
+Worth knowing:
+
+- netflume: v0.2.0 is not on main
+
+<!-- sweep:end -->
+
+Read the columns this way. **Tags on main** counts tags that are ancestors of
+`main`; a tag put on a release branch before it was squash merged is not one,
+and the history stops describing it. **Unreleased** is how far `main` has
+moved since the newest release, which is normal in itself. **Published** is
+what the registries actually serve, asked of them rather than inferred from a
+green publish job.

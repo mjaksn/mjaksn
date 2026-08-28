@@ -1,0 +1,65 @@
+name: Sweep
+
+# Every morning, and on demand. Nothing here fires on a push: the table is a
+# statement about five other repositories, and this one changing says nothing
+# about them.
+on:
+  schedule:
+    - cron: "0 7 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# A second run while the first is still going would race it to the same
+# commit. The later one wins, which is the right answer for a table that is
+# only ever a snapshot.
+concurrency:
+  group: sweep
+  cancel-in-progress: true
+
+jobs:
+  sweep:
+    name: sweep the repositories
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.12"
+
+      - name: sweep
+        id: sweep
+        # Allowed to fail without stopping the job, because a failure here
+        # means it found something and the finding still has to reach the
+        # README and the summary. The job is failed again at the end.
+        continue-on-error: true
+        env:
+          # The workflow's own token, which is scoped to this repository but
+          # reads any public one, and all five are public. If one ever goes
+          # private this wants a fine-grained token with read access to it.
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/sweep.py --readme README.md
+
+      - name: commit the table if it moved
+        # Most mornings nothing has changed and there is nothing to commit,
+        # which is why this checks rather than committing unconditionally: a
+        # daily empty commit would bury the days something did change.
+        run: |
+          if git diff --quiet -- README.md; then
+            echo "nothing moved"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Sweep: $(date -u +%Y-%m-%d)" -- README.md
+          git push
+
+      - name: say so if something is out of step
+        # The sweep already wrote what it found to the step summary. This is
+        # only here to colour the run red, so that a failure notification
+        # arrives rather than waiting to be noticed on the profile page.
+        if: steps.sweep.outcome == 'failure'
+        run: |
+          echo "::error::the sweep found something out of step; see the summary"
+          exit 1
