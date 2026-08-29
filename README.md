@@ -28,10 +28,10 @@ table nobody reads.
 | Repo | Version | Release | Tags on main | Unreleased | CI | PRs | Unmerged | Published |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | nettail | 0.4.0 | v0.4.0 | all 8 | none | success | 0 | none | PyPI 0.4.0, GHCR 0.4.0, Docker Hub 0.4.0 |
-| netflume | 0.2.1 | v0.2.1 | all 2 | 2 commits | success | 0 | none | PyPI 0.2.1 |
+| netflume | 0.2.1 | v0.2.1 | all 2 | 3 commits | success | 0 | none | PyPI 0.2.1 |
 | lanname | 0.2.1 | v0.2.1 | all 3 | 1 commit | success | 0 | none | PyPI 0.2.1 |
 | readerboard | 0.1.4 | v0.1.4 | all 4 | 5 commits | success | 0 | none | PyPI 0.1.4, GHCR 0.1.4, Docker Hub 0.1.4 |
-| bravia-http-remote | 1.1.0 | v1.1.0 | all 2 | 6 commits | success | 1 | dependabot/github_actions/actions/download-artifact-8.0.1 (+1/-4), split-app-js (+2/-8) | GHCR 1.1.0, Docker Hub 1.1.0 |
+| bravia-http-remote | 1.1.0 | v1.1.0 | all 2 | 7 commits | success | 1 | dependabot/github_actions/actions/download-artifact-8.0.1 (+1/-5), split-app-js (+2/-9) | GHCR 1.1.0, Docker Hub 1.1.0 |
 
 <!-- sweep:end -->
 
