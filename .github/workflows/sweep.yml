@@ -1,7 +1,7 @@
 name: Sweep
 
 # Every morning, and on demand. Nothing here fires on a push: the table is a
-# statement about five other repositories, and this one changing says nothing
+# statement about six other repositories, and this one changing says nothing
 # about them.
 on:
   schedule:
@@ -36,7 +36,7 @@ jobs:
         continue-on-error: true
         env:
           # The workflow's own token, which is scoped to this repository but
-          # reads any public one, and all five are public. If one ever goes
+          # reads any public one, and all six are public. If one ever goes
           # private this wants a fine-grained token with read access to it.
           GITHUB_TOKEN: ${{ github.token }}
         run: python scripts/sweep.py --readme README.md

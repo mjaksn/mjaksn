@@ -2,7 +2,7 @@
 
 """Say what is out of step across the repositories.
 
-Five repositories, four systems: git, GitHub, PyPI, and two container
+Six repositories, four systems: git, GitHub, PyPI, and two container
 registries. Nothing watches all four at once, so this does, and it does it
 by asking rather than by remembering. Every number below is read at run
 time; nothing here is a copy of what was true when it was written.
@@ -74,6 +74,12 @@ REPOS = [
          versions=[("package.json", "package.json"), ("app.js", "js")],
          images=["ghcr.io/mjaksn/bravia-http-remote",
                  "docker.io/mjaksn/bravia-http-remote"]),
+    # Neither a package nor an image: shell scripts for one board, where the
+    # release page and the tarball on it are the whole of the distribution.
+    # Published stays empty for it, and the columns that say whether it is in
+    # step are the release and the tag.
+    Repo("cec-ir-bridge",
+         versions=[("bin/cec-ir-bridge", "bash")]),
 ]
 
 
@@ -89,7 +95,7 @@ def token() -> str:
         return found.stdout.strip()
     except (OSError, subprocess.CalledProcessError):
         # Unauthenticated works, at sixty requests an hour, which covers one
-        # repository and not five. Say so here rather than failing halfway
+        # repository and not six. Say so here rather than failing halfway
         # through against a rate limit nobody was expecting.
         print("warning: no GitHub token, so the rate limit will bite",
               file=sys.stderr)
@@ -178,6 +184,9 @@ def read_version(text: str, kind: str) -> str | None:
         return found.group(1) if found else None
     if kind == "js":
         found = re.search(r'APP_VERSION\s*=\s*["\']([^"\']+)', text)
+        return found.group(1) if found else None
+    if kind == "bash":
+        found = re.search(r'^VERSION="([^"]+)"', text, re.M)
         return found.group(1) if found else None
     raise ValueError(kind)
 
