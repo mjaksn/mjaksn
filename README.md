@@ -32,7 +32,7 @@ table nobody reads.
 | netflume | 0.2.1 | v0.2.1 | all 2 | 4 commits | success | 0 | none | PyPI 0.2.1 |
 | lanname | 0.2.1 | v0.2.1 | all 3 | 2 commits | success | 0 | none | PyPI 0.2.1 |
 | readerboard | 0.1.4 | v0.1.4 | all 4 | 7 commits | success | 0 | none | PyPI 0.1.4, GHCR 0.1.4, Docker Hub 0.1.4 |
-| bravia-http-remote | 1.2.0 | v1.2.0 | all 3 | 2 commits | success | 0 | split-app-js (+2/-13) | GHCR 1.2.0, Docker Hub 1.2.0 |
+| bravia-http-remote | 1.2.0 | v1.2.0 | all 3 | 2 commits | success | 1 | hidden-cards (+3/-0), split-app-js (+2/-13) | GHCR 1.2.0, Docker Hub 1.2.0 |
 | cec-ir-bridge | 0.1.1 | v0.1.1 | all 2 | none | success | 0 | none | none |
 
 <!-- sweep:end -->
