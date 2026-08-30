@@ -31,8 +31,8 @@ table nobody reads.
 | nettail | 0.4.1 | v0.4.1 | all 9 | 1 commit | success | 0 | none | PyPI 0.4.1, GHCR 0.4.1, Docker Hub 0.4.1 |
 | netflume | 0.2.1 | v0.2.1 | all 2 | 4 commits | success | 0 | none | PyPI 0.2.1 |
 | lanname | 0.2.1 | v0.2.1 | all 3 | 2 commits | success | 0 | none | PyPI 0.2.1 |
-| readerboard | 0.1.4 | v0.1.4 | all 4 | 7 commits | success | 0 | none | PyPI 0.1.4, GHCR 0.1.4, Docker Hub 0.1.4 |
-| bravia-http-remote | 1.2.0 | v1.2.0 | all 3 | 4 commits | success | 3 | dependabot/github_actions/actions/checkout-7.0.1 (+1/-0), dependabot/github_actions/actions/upload-artifact-7.0.1 (+1/-0), hidden-cards (+4/-0), split-app-js (+2/-15) | GHCR 1.2.0, Docker Hub 1.2.0 |
+| readerboard | 0.1.4 | v0.1.4 | all 4 | 9 commits | success | 1 | swagger-authorize (+2/-0) | PyPI 0.1.4, GHCR 0.1.4, Docker Hub 0.1.4 |
+| bravia-http-remote | 1.3.0 | v1.3.0 | all 4 | 1 commit | success | 2 | dependabot/github_actions/actions/checkout-7.0.1 (+1/-3), dependabot/github_actions/actions/upload-artifact-7.0.1 (+1/-3), split-app-js (+2/-18) | GHCR 1.3.0, Docker Hub 1.3.0 |
 | cec-ir-bridge | 0.1.1 | v0.1.1 | all 2 | none | success | 0 | none | none |
 
 <!-- sweep:end -->
