@@ -35,6 +35,8 @@ table nobody reads.
 | bravia-http-remote | 1.3.0 | v1.3.0 | all 4 | 1 commit | success | 2 | dependabot/github_actions/actions/checkout-7.0.1 (+1/-3), dependabot/github_actions/actions/upload-artifact-7.0.1 (+1/-3), split-app-js (+2/-18) | GHCR 1.3.0, Docker Hub 1.3.0 |
 | cec-ir-bridge | 0.1.1 | v0.1.1 | all 2 | none | success | 0 | none | none |
 
+<sub>Generated: 2026-09-03 11:55 UTC</sub>
+
 <!-- sweep:end -->
 
 Read the columns this way. **Tags on main** counts tags that are ancestors of
