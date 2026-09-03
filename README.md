@@ -31,7 +31,7 @@ table nobody reads.
 | nettail | 0.7.0 | v0.7.0 | all 13 | none | success | 2 | dependabot/docker/python-3.14.7-slim (+1/-1), summary-protocol-directions (+2/-0) | PyPI 0.7.0, GHCR 0.7.0, Docker Hub 0.7.0 |
 | netflume | 0.2.1 | v0.2.1 | all 2 | 4 commits | success | 0 | none | PyPI 0.2.1 |
 | lanname | 0.2.1 | v0.2.1 | all 3 | 2 commits | success | 0 | none | PyPI 0.2.1 |
-| readerboard | 0.3.0 | v0.3.0 | all 6 | none | success | 1 | open-docs-on-start (+1/-0) | PyPI 0.3.0, GHCR 0.3.0, Docker Hub 0.3.0 |
+| readerboard | 0.3.0 | v0.3.0 | all 6 | none | CI failure | 1 | open-docs-on-start (+1/-0) | PyPI 0.3.0, GHCR 0.3.0, Docker Hub 0.3.0 |
 | bravia-http-remote | 1.3.0 | v1.3.0 | all 4 | 1 commit | success | 2 | dependabot/github_actions/actions/checkout-7.0.1 (+1/-3), dependabot/github_actions/actions/upload-artifact-7.0.1 (+1/-3), split-app-js (+2/-18) | GHCR 1.3.0, Docker Hub 1.3.0 |
 | cec-ir-bridge | 0.1.1 | v0.1.1 | all 2 | none | success | 0 | none | none |
 
