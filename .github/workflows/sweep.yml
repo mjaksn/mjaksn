@@ -44,9 +44,12 @@ jobs:
       - name: commit the table if it moved
         # Most mornings nothing has changed and there is nothing to commit,
         # which is why this checks rather than committing unconditionally: a
-        # daily empty commit would bury the days something did change.
+        # daily empty commit would bury the days something did change. The
+        # footer carries a timestamp and so moves on every run, which is why
+        # it is left out of the check: the date in the README is the date of
+        # the table above it, and the table only goes back when it has moved.
         run: |
-          if git diff --quiet -- README.md; then
+          if git diff -I '^<sub>Generated:' --quiet -- README.md; then
             echo "nothing moved"
             exit 0
           fi

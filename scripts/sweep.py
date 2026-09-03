@@ -35,6 +35,7 @@ import tomllib
 import urllib.error
 import urllib.request
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 
 API = "https://api.github.com"
 OWNER = "mjaksn"
@@ -331,6 +332,17 @@ def table(results: list[Result]) -> str:
     return "\n".join(lines)
 
 
+def footer() -> str:
+    """When this was made, in the smallest type GitHub will render.
+
+    A snapshot is only as good as its date. `<sub>` is the smallest element
+    the markdown sanitiser lets through, and minutes are as fine as a daily
+    run needs.
+    """
+    return "<sub>Generated: %s UTC</sub>" % datetime.now(timezone.utc).strftime(
+        "%Y-%m-%d %H:%M")
+
+
 START = "<!-- sweep:start -->"
 END = "<!-- sweep:end -->"
 
@@ -373,6 +385,10 @@ def main() -> int:
         for repo, problem in problems:
             print("- %s: %s" % (repo, problem))
 
+    # Last in every output, after the problems where there are any.
+    made = footer()
+    print("\n" + made)
+
     summary = os.environ.get("GITHUB_STEP_SUMMARY")
     if summary:
         with open(summary, "a", encoding="utf-8") as handle:
@@ -381,9 +397,10 @@ def main() -> int:
                 handle.write("\n### Out of step\n\n"
                              + "\n".join("- **%s**: %s" % pair
                                          for pair in problems) + "\n")
+            handle.write("\n" + made + "\n")
 
     if args.readme:
-        rewrite(args.readme, body)
+        rewrite(args.readme, body + "\n\n" + made)
 
     return 1 if problems else 0
 
