@@ -28,14 +28,14 @@ table nobody reads.
 
 | Repo | Version | Release | Tags on main | Unreleased | CI | PRs | Unmerged | Published |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| nettail | 0.11.0 | v0.11.0 | all 15 | 1 commit | success | 2 | changelog-0-10-0-link (+1/-1), dependabot/docker/python-3.14.7-slim (+1/-5) | PyPI 0.11.0, GHCR 0.11.0, Docker Hub 0.11.0 |
-| netflume | 0.2.1 | v0.2.1 | all 2 | 4 commits | success | 1 | template-events (+2/-0) | PyPI 0.2.1 |
+| nettail | 0.11.0 | v0.11.0 | all 15 | 3 commits | success | 1 | dependabot/docker/python-3.14.7-slim (+1/-7) | PyPI 0.11.0, GHCR 0.11.0, Docker Hub 0.11.0 |
+| netflume | 0.3.0 | v0.3.0 | all 3 | none | success | 0 | template-events (+4/-1) | PyPI 0.3.0 |
 | lanname | 0.2.1 | v0.2.1 | all 3 | 2 commits | success | 0 | none | PyPI 0.2.1 |
 | readerboard | 0.3.0 | v0.3.0 | all 6 | 3 commits | success | 0 | none | PyPI 0.3.0, GHCR 0.3.0, Docker Hub 0.3.0 |
 | bravia-http-remote | 1.3.0 | v1.3.0 | all 4 | 1 commit | success | 2 | dependabot/github_actions/actions/checkout-7.0.1 (+1/-3), dependabot/github_actions/actions/upload-artifact-7.0.1 (+1/-3), split-app-js (+2/-18) | GHCR 1.3.0, Docker Hub 1.3.0 |
 | cec-ir-bridge | 0.1.1 | v0.1.1 | all 2 | none | success | 0 | none | none |
 
-<sub>Generated: 2026-09-03 11:55 UTC</sub>
+<sub>Generated: 2026-09-03 12:18 UTC</sub>
 
 <!-- sweep:end -->
 
