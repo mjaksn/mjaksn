@@ -72,9 +72,40 @@ source and `python -m netflume` are independent additive modules with no
 interaction, which makes them the safest work to be doing while the API settles
 into its final shape. 1.0.0 itself contains no library code.
 
+## What shipped while the plan sat
+
+Two releases went out on 3 September 2026 that this plan did not anticipate, and
+neither is one of the README's twelve roadmap items. 0.3.0 added
+`TemplateLearned`, so that learning a template became something a caller can
+hear about rather than a number in `stats`. 0.4.0 fixed two faults in it: a
+template that changes kind under an ID already in use is a redefinition and is
+now reported as one, and the event carries its own copy of the layout rather
+than the live list the store goes on decoding every later record through.
+
+The work stands. What it cost is the numbering and one ordering guarantee.
+
+**Every stage below moves up two.** Ground and instruments is 0.5.0 and new
+front doors is 0.10.0, which sorts after 0.9.0 under semantic versioning and on
+PyPI. The stages themselves are untouched, because each boundary below exists
+for a reason the text gives, and compressing two of them to avoid a two-digit
+minor would mean deleting the reason rather than answering it.
+
+**The floor raise no longer goes first, which was the one thing the ordering
+existed to prevent.** It was placed first because it rewrites the typing style
+of every module, so anything merged ahead of it gets rewritten by it. Two
+releases are now ahead of it. The bill turned out to be almost nothing, and it
+is worth recording why rather than being quietly relieved: the new code landed
+in `events.py` and `parse.py`, and neither module imports `typing` or carries
+annotations to convert. Only `decoder.py`, `flow.py` and `values.py` use
+`Optional`, `List` and friends at all, and the 0.3.0 and 0.4.0 work did not add
+a single one. So the constraint was broken and the package got away with it,
+because this codebase annotates far less than the constraint assumed. That is
+luck rather than design, and the next feature merged ahead of the floor raise
+may sit in a module that is annotated.
+
 ## The sequence, from here to the tag
 
-### 0.3.0, ground and instruments
+### 0.5.0, ground and instruments
 
 Nothing can be optimised before it can be measured, and the floor raise touches
 the typing style of every module, so anything merged before it gets rewritten by
@@ -99,7 +130,7 @@ fails for a novel reason is one people learn to click past, and shared runners
 make throughput noisy enough that a hard threshold becomes that check within
 a month.
 
-### 0.4.0, transport and the shape of the surface
+### 0.6.0, transport and the shape of the surface
 
 The break-it-once release. Every signature change in the plan is in it.
 
@@ -118,6 +149,13 @@ for the IPv6 work
 ([netflume#17](https://github.com/mjaksn/netflume/issues/17)), not a detail
 inside it.
 
+Since 0.3.0 there is a fourth place that string reaches, and it is the one a
+consumer sees. `TemplateLearned.exporter` carries the address out of the library
+to whoever is reading events, so normalisation is no longer only about keying
+three internal tables consistently: it decides what an exporter is called in
+public. Normalise once, where the datagram is received, so the tables and the
+event cannot disagree.
+
 Three smaller corrections ride along, because this is the last cheap moment for
 the first of them:
 
@@ -132,7 +170,7 @@ the first of them:
   nothing at all today. A counter makes them visible
   ([netflume#20](https://github.com/mjaksn/netflume/issues/20)).
 
-### 0.5.0, the fast path
+### 0.7.0, the fast path
 
 The riskiest rewrite in the plan, and it touches nothing a consumer can see.
 
@@ -143,6 +181,13 @@ when every field is fixed length. Unsigned integers of width 1, 2, 4 and 8 need
 no post-processing at all. A template with any variable-length field is simply
 not compiled and keeps the current walk, so IPFIX variable-length encoding is
 untouched and the two paths coexist by design rather than by accident.
+
+"The moment a template is learned" is now a busier moment than it was when this
+was written. `TemplateStore.put` decides whether the template is new or changed,
+raises the event, and is where the compile step goes too, so all three share one
+definition of what learning means. Compile after the layout is accepted, not
+before: a template refused for being truncated must not leave a compiled struct
+behind, exactly as it must not leave a stored layout behind.
 
 The safety net matters more than the change. A silent decode difference is
 exactly the failure class `tests/test_hardening.py` exists for: it does not
@@ -166,7 +211,7 @@ without ceremony if the number does not move. And `decode_value`'s bare
 is what upholds the never-raises promise and should stay, but it is also where a
 genuine conversion bug would hide in complete silence.
 
-### 0.6.0, extending the decode
+### 0.8.0, extending the decode
 
 All three items build on the compiled path, and two are nearly free on it.
 
@@ -193,7 +238,7 @@ breaking change in the plan. It widens `MODELLED_FIELDS` and therefore
 docstring already promises the set may gain fields, so it is permitted, but it
 still changes an `INSERT`.
 
-### 0.7.0, durability
+### 0.9.0, durability
 
 The item that matters most to a long-running daemon, kept in its own release
 because it is the only place in the package where a **file** becomes untrusted
@@ -218,7 +263,20 @@ resend window; wrong costs correctness, and this package's preference between
 those two is already settled and visible in the way a truncated template is
 refused rather than salvaged.
 
-### 0.8.0, new front doors
+`TemplateLearned` adds a question to the restore that did not exist when this
+was planned, and it should be answered in the issue rather than discovered in
+review: does loading a file raise an event per template it carries? Both answers
+are defensible and they are not equally safe. Silence keeps the event meaning
+what it means today, which is that an exporter said something; a full store
+restored from disk would otherwise announce hundreds of templates nobody sent,
+and `MAX_PENDING_TEMPLATES` would drop most of them on the floor for a caller
+that had not drained yet, so the announcement would be both untrue and
+incomplete. Raising them, on the other hand, is what a consumer maintaining its
+own view of the layouts would want. The recommendation is silence on restore,
+with the restored count exposed as a return value or a counter instead, because
+a number nobody has to drain cannot overflow a queue.
+
+### 0.10.0, new front doors
 
 Four independent modules with no interaction between them and no effect on the
 decode path, which makes this the safest work to be doing while everything else
@@ -250,7 +308,7 @@ no library code at all.
 
 ### 1.0.0, the freeze
 
-Prose, policy and a version number. 0.8.0 published every line of code 1.0.0
+Prose, policy and a version number. 0.10.0 published every line of code 1.0.0
 freezes, which is the shape 0.2.1 already took, and it means the thing being
 frozen has been installed by real people before it is frozen.
 
@@ -259,8 +317,12 @@ The documentation audit
 standing definition: if a person reads it, it is in scope, wherever it lives.
 Known to be stale when it runs are the throughput figures, the test count,
 the Ceilings table, the Counters table, and the Limitations list, of which IPv6
-transport and single-threaded receive are both wrong. The Roadmap section
-is reduced to the non-goals
+transport and single-threaded receive are both wrong. The test count is already
+wrong in two places as of 0.4.0, `README.md` and `AGENTS.md`, both still saying
+273 against an actual 304, which is the ordinary way that particular number
+rots: it is correct on the day a release goes out and stale on the next merge.
+Fixing it before the audit is fine and does not spend the audit. The Roadmap
+section is reduced to the non-goals
 ([netflume#36](https://github.com/mjaksn/netflume/issues/36)), because a 1.0 that
 still advertises a roadmap has not frozen anything.
 
@@ -293,14 +355,17 @@ recommendation on it.
   item, raised because the README already names a spoofing flood as how the
   ceilings get reached in the first place. Every table has a ceiling, so a flood
   degrades the collector rather than killing it; an `accept` predicate means
-  the flood never reaches the tables at all. **Take it**, in 0.4.0 with the rest
+  the flood never reaches the tables at all. **Take it**, in 0.6.0 with the rest
   of the surface work.
 - **A per-exporter sub-cap on the template store**
   ([netflume#40](https://github.com/mjaksn/netflume/issues/40)). Eviction is
   least-recently-used across the whole store, not per exporter, so one exporter
   churning template IDs can evict another exporter's live templates. The ceiling
   holds, which is what it promises; the fairness does not. **Take it**, in
-  0.7.0, where the store is already open.
+  0.9.0, where the store is already open. The store has two ceilings since
+  0.3.0, and this one is about `MAX_TEMPLATES`, the stored layouts.
+  `MAX_PENDING_TEMPLATES` bounds undrained events and wants no per-exporter
+  split: a `Decoder` drains it on every datagram and never approaches it.
 - **The sequence tuning constants**
   ([netflume#41](https://github.com/mjaksn/netflume/issues/41)). `max_streams`
   is a constructor argument; `MAX_REORDER`, `RESYNC_AFTER` and
@@ -346,3 +411,5 @@ That is what the differential test is for, and it is worth keeping the old path
 alive purely to have something to compare against.
 
 *Plan drafted 2026-08-31, at netflume v0.2.1.*
+*Revised 2026-09-04, at netflume v0.4.0: stages renumbered, and the*
+*consequences of `TemplateLearned` folded into the items it touches.*
