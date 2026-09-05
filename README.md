@@ -28,14 +28,14 @@ table nobody reads.
 
 | Repo | Version | Release | Tags on main | Unreleased | CI | PRs | Unmerged | Published |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| nettail | 0.13.0 | v0.13.0 | all 17 | none | success | 2 | dependabot/docker/python-3.14.7-slim (+1/-16), templates-flag (+2/-0) | PyPI 0.13.0, GHCR 0.13.0, Docker Hub 0.13.0 |
-| netflume | 0.4.0 | v0.4.0 | all 4 | 3 commits | success | 1 | bench-workflow (+1/-0) | PyPI 0.4.0 |
-| lanname | 0.2.1 | v0.2.1 | all 3 | 2 commits | success | 0 | none | PyPI 0.2.1 |
-| readerboard | 0.3.0 | v0.3.0 | all 6 | 3 commits | success | 2 | dependabot/docker/python-3.14.7-slim (+1/-0), worktree-rule (+1/-0) | PyPI 0.3.0, GHCR 0.3.0, Docker Hub 0.3.0 |
+| nettail | 0.13.1 | v0.13.1 | all 18 | none | success | 1 | dependabot/docker/python-3.14.7-slim (+1/-17) | PyPI 0.13.1, GHCR 0.13.1, Docker Hub 0.13.1 |
+| netflume | 0.5.0 | v0.5.0 | all 5 | none | success | 0 | none | PyPI 0.5.0 |
+| lanname | 0.2.1 | v0.2.1 | all 3 | 2 commits | success | 5 | none | PyPI 0.2.1 |
+| readerboard | 0.3.0 | v0.3.0 | all 6 | 3 commits | success | 3 | dependabot/docker/python-3.14.7-slim (+1/-0), fix-uvicorn-access-log (+1/-0), worktree-rule (+1/-0) | PyPI 0.3.0, GHCR 0.3.0, Docker Hub 0.3.0 |
 | bravia-http-remote | 1.3.0 | v1.3.0 | all 4 | 1 commit | success | 2 | dependabot/github_actions/actions/checkout-7.0.1 (+1/-3), dependabot/github_actions/actions/upload-artifact-7.0.1 (+1/-3), split-app-js (+2/-18) | GHCR 1.3.0, Docker Hub 1.3.0 |
 | cec-ir-bridge | 0.1.1 | v0.1.1 | all 2 | none | success | 0 | none | none |
 
-<sub>Generated: 2026-09-05 06:34 UTC</sub>
+<sub>Generated: 2026-09-05 10:22 UTC</sub>
 
 <!-- sweep:end -->
 
