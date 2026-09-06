@@ -71,13 +71,13 @@ added there is a row checked here.
 
 <!-- cool:start -->
 
-- toolshed: [ci: bump ruff from 0.16.4 to 0.16.5 in /.github](https://github.com/mjaksn/toolshed/pull/8)
+Nothing yet.
 
 Still waiting:
 
 - nettail: [deps: bump python from 3.14.6-slim to 3.14.7-slim](https://github.com/mjaksn/nettail/pull/32), ready 2026-09-08 23:08 UTC
 - readerboard: [deps: bump python from 3.14.6-slim to 3.14.7-slim](https://github.com/mjaksn/readerboard/pull/45), ready 2026-09-08 23:08 UTC
 
-<sub>Checked: 2026-09-06 08:07 UTC</sub>
+<sub>Checked: 2026-09-06 11:43 UTC</sub>
 
 <!-- cool:end -->
