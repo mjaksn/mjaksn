@@ -1,7 +1,7 @@
 name: Are you cool enough
 
 # Every morning after the sweep, and on demand. Nothing here fires on a
-# push: the list is about pull requests in six other repositories, and this
+# push: the list is about pull requests in seven other repositories, and this
 # one changing says nothing about them.
 on:
   schedule:

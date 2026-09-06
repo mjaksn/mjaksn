@@ -2,7 +2,7 @@
 
 """Say what is out of step across the repositories.
 
-Six repositories, four systems: git, GitHub, PyPI, and two container
+Seven repositories, four systems: git, GitHub, PyPI, and two container
 registries. Nothing watches all four at once, so this does, and it does it
 by asking rather than by remembering. Every number below is read at run
 time; nothing here is a copy of what was true when it was written.
@@ -81,6 +81,12 @@ REPOS = [
     # step are the release and the tag.
     Repo("cec-ir-bridge",
          versions=[("bin/cec-ir-bridge", "bash")]),
+    # Neither versioned nor released, and not going to be: a collection of
+    # unrelated scripts with no version file, no tags and nothing published.
+    # Version reads none and Unreleased reads n/a for it, rather than the ?
+    # that means something could not be read, and the columns that say
+    # anything about it are CI, PRs and Unmerged.
+    Repo("toolshed", versions=[]),
 ]
 
 
@@ -96,7 +102,7 @@ def token() -> str:
         return found.stdout.strip()
     except (OSError, subprocess.CalledProcessError):
         # Unauthenticated works, at sixty requests an hour, which covers one
-        # repository and not six. Say so here rather than failing halfway
+        # repository and not seven. Say so here rather than failing halfway
         # through against a rate limit nobody was expecting.
         print("warning: no GitHub token, so the rate limit will bite",
               file=sys.stderr)
@@ -223,7 +229,12 @@ def sweep_one(repo: Repo, tok: str) -> Result:
         text = raw(repo.name, path, tok)
         versions[path] = read_version(text, kind) if text else None
     stated = {v for v in versions.values() if v}
-    out.version = "/".join(sorted(stated)) if stated else "?"
+    if stated:
+        out.version = "/".join(sorted(stated))
+    elif not repo.versions:
+        # Nothing declares a version, so there is none to read, which is a
+        # different answer from a version file that could not be read.
+        out.version = "none"
     if len(stated) > 1:
         out.problems.append("versions disagree: %s" % versions)
 
@@ -245,8 +256,11 @@ def sweep_one(repo: Repo, tok: str) -> Result:
         compared = gh("%s/compare/main...%s" % (base, tag["name"]), tok)
         if compared and compared["status"] == "diverged":
             off.append(tag["name"])
-    out.tags_on_main = ("all %d" % len(tags) if not off
-                        else "%d of %d" % (len(tags) - len(off), len(tags)))
+    if not tags:
+        out.tags_on_main = "none"
+    else:
+        out.tags_on_main = ("all %d" % len(tags) if not off
+                            else "%d of %d" % (len(tags) - len(off), len(tags)))
     for name in off:
         out.notes.append("%s is not on main" % name)
 
@@ -257,6 +271,10 @@ def sweep_one(repo: Repo, tok: str) -> Result:
         behind = compared["behind_by"] if compared else 0
         out.unreleased = ("none" if not behind
                           else "%d commit%s" % (behind, "" if behind == 1 else "s"))
+    elif not repo.versions:
+        # With no release to measure from, and no version that a release
+        # would carry, the question does not apply.
+        out.unreleased = "n/a"
 
     # CI, as of the most recent run of each workflow on main. A workflow that
     # has never run there is not a failure: it is one that only fires on tags.

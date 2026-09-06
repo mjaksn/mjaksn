@@ -1,7 +1,8 @@
 # mjaksn
 
-Small networking and hardware tools. Mostly Python, mostly no dependencies,
-and each one built to be read as well as run.
+Small networking and hardware tools, and a shed for the scripts that belong
+to none of them. Mostly Python, mostly no dependencies, and each one built to
+be read as well as run.
 
 | Project | What it is | Latest | Build |
 | --- | --- | --- | --- |
@@ -11,12 +12,14 @@ and each one built to be read as well as run.
 | [readerboard](https://github.com/mjaksn/readerboard) | An HTTP service for BetaBrite and Alpha protocol LED signs, with alerts, scheduling and clock sync | [![PyPI](https://img.shields.io/pypi/v/readerboard)](https://pypi.org/project/readerboard/) | [![CI](https://github.com/mjaksn/readerboard/actions/workflows/ci.yml/badge.svg)](https://github.com/mjaksn/readerboard/actions/workflows/ci.yml) |
 | [bravia-http-remote](https://github.com/mjaksn/bravia-http-remote) | A single-page console for controlling a Sony Bravia display over your network | [![Release](https://img.shields.io/github/v/release/mjaksn/bravia-http-remote)](https://github.com/mjaksn/bravia-http-remote/releases/latest) | [![CI](https://github.com/mjaksn/bravia-http-remote/actions/workflows/ci.yml/badge.svg)](https://github.com/mjaksn/bravia-http-remote/actions/workflows/ci.yml) |
 | [cec-ir-bridge](https://github.com/mjaksn/cec-ir-bridge) | Volume control for an IR-only soundbar from the Apple TV Remote app, over HDMI-CEC and an ESP32 IR blaster | [![Release](https://img.shields.io/github/v/release/mjaksn/cec-ir-bridge)](https://github.com/mjaksn/cec-ir-bridge/releases/latest) | [![CI](https://github.com/mjaksn/cec-ir-bridge/actions/workflows/ci.yml/badge.svg)](https://github.com/mjaksn/cec-ir-bridge/actions/workflows/ci.yml) |
+| [toolshed](https://github.com/mjaksn/toolshed) | Small scripts and helper apps that belong to no particular project, one directory per tool, and mixed languages on purpose | no releases | [![CI](https://github.com/mjaksn/toolshed/actions/workflows/ci.yml/badge.svg)](https://github.com/mjaksn/toolshed/actions/workflows/ci.yml) |
 
 ## Where everything stands
 
 The badges above say whether the last build passed and what the registries
 serve. They cannot say whether those two agree with each other, or whether a
-tag is on the branch it claims to be on, so the table below asks.
+tag is on the branch it claims to be on, so the table below asks, of every
+repository in the table above.
 
 [`scripts/sweep.py`](scripts/sweep.py) reads it fresh from GitHub, PyPI and
 both container registries every morning and writes what it found here. It is
@@ -31,11 +34,12 @@ table nobody reads.
 | nettail | 0.13.1 | v0.13.1 | all 18 | none | success | 1 | dependabot/docker/python-3.14.7-slim (+1/-17) | PyPI 0.13.1, GHCR 0.13.1, Docker Hub 0.13.1 |
 | netflume | 0.5.0 | v0.5.0 | all 5 | none | success | 0 | none | PyPI 0.5.0 |
 | lanname | 0.2.1 | v0.2.1 | all 3 | 2 commits | success | 5 | none | PyPI 0.2.1 |
-| readerboard | 0.3.0 | v0.3.0 | all 6 | 4 commits | success | 2 | dependabot/docker/python-3.14.7-slim (+1/-1), fix-uvicorn-access-log (+1/-1) | PyPI 0.3.0, GHCR 0.3.0, Docker Hub 0.3.0 |
+| readerboard | 0.3.0 | v0.3.0 | all 6 | 6 commits | success | 1 | dependabot/docker/python-3.14.7-slim (+1/-3) | PyPI 0.3.0, GHCR 0.3.0, Docker Hub 0.3.0 |
 | bravia-http-remote | 1.3.0 | v1.3.0 | all 4 | 3 commits | success | 0 | split-app-js (+2/-20) | GHCR 1.3.0, Docker Hub 1.3.0 |
 | cec-ir-bridge | 0.1.1 | v0.1.1 | all 2 | none | success | 0 | none | none |
+| toolshed | none | none | none | n/a | success | 1 | dependabot/pip/dot-github/ruff-0.16.5 (+1/-8) | none |
 
-<sub>Generated: 2026-09-06 05:08 UTC</sub>
+<sub>Generated: 2026-09-06 08:07 UTC</sub>
 
 <!-- sweep:end -->
 
@@ -44,7 +48,9 @@ Read the columns this way. **Tags on main** counts tags that are ancestors of
 and the history stops describing it. **Unreleased** is how far `main` has
 moved since the newest release, which is normal in itself. **Published** is
 what the registries actually serve, asked of them rather than inferred from a
-green publish job.
+green publish job. A repository that releases nothing, which is what the shed
+is, shows `none` and `n/a` where those questions do not apply, and the columns
+that say anything about it are CI, PRs and Unmerged.
 
 ## Are you cool enough
 
@@ -62,13 +68,13 @@ added there is a row checked here.
 
 <!-- cool:start -->
 
-Nothing yet.
+- toolshed: [ci: bump ruff from 0.16.4 to 0.16.5 in /.github](https://github.com/mjaksn/toolshed/pull/8)
 
 Still waiting:
 
 - nettail: [deps: bump python from 3.14.6-slim to 3.14.7-slim](https://github.com/mjaksn/nettail/pull/32), ready 2026-09-08 23:08 UTC
 - readerboard: [deps: bump python from 3.14.6-slim to 3.14.7-slim](https://github.com/mjaksn/readerboard/pull/45), ready 2026-09-08 23:08 UTC
 
-<sub>Checked: 2026-09-06 05:10 UTC</sub>
+<sub>Checked: 2026-09-06 08:07 UTC</sub>
 
 <!-- cool:end -->
