@@ -45,3 +45,25 @@ and the history stops describing it. **Unreleased** is how far `main` has
 moved since the newest release, which is normal in itself. **Published** is
 what the registries actually serve, asked of them rather than inferred from a
 green publish job.
+
+## Are you cool enough
+
+Nothing third-party is used within seven days of its release. Dependabot has
+a cooldown setting for that, and the repositories above that use Dependabot
+set it, but it only holds where the registry tells Dependabot when a version
+came out, and Docker Hub does not.
+[`scripts/are_you_cool_enough.py`](scripts/are_you_cool_enough.py) asks the
+registries itself, every morning after the sweep, for each open Dependabot
+pull request in the repositories above, and writes the ones that have waited
+long enough here. The run's summary also lists the rest, with the date each
+one clears or why no date could be found. It reads the project table above
+for the repositories to check, so a row added there is a row checked here.
+
+<!-- cool:start -->
+
+- bravia-http-remote: [ci: bump actions/upload-artifact from 4.6.2 to 7.0.1](https://github.com/mjaksn/bravia-http-remote/pull/22)
+- bravia-http-remote: [ci: bump actions/checkout from 4.2.2 to 7.0.1](https://github.com/mjaksn/bravia-http-remote/pull/21)
+
+<sub>Checked: 2026-09-06 04:32 UTC</sub>
+
+<!-- cool:end -->

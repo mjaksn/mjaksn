@@ -1,0 +1,55 @@
+name: Are you cool enough
+
+# Every morning after the sweep, and on demand. Nothing here fires on a
+# push: the list is about pull requests in six other repositories, and this
+# one changing says nothing about them.
+on:
+  schedule:
+    - cron: "30 7 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# A second run while the first is still going would race it to the same
+# commit. The later one wins, which is the right answer for a list that is
+# only ever a snapshot.
+concurrency:
+  group: are-you-cool-enough
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: ask the registries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.12"
+
+      - name: list the pull requests that have waited long enough
+        env:
+          # The workflow's own token, which reads any public repository, and
+          # every one the README lists is public. The registries need no
+          # credential at all.
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/are_you_cool_enough.py --readme README.md --write
+
+      - name: commit the list if it moved
+        # Most mornings the list is the same as yesterday's and there is
+        # nothing to commit. The footer carries a timestamp and so moves on
+        # every run, which is why it is left out of the check: the date in
+        # the README is the date of the list above it, and the list only
+        # goes back when it has moved. The pull before the push is for the
+        # morning the sweep, half an hour earlier, is still on its way.
+        run: |
+          if git diff -I '^<sub>Checked:' --quiet -- README.md; then
+            echo "nothing moved"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Cool enough: $(date -u +%Y-%m-%d)" -- README.md
+          git pull --rebase
+          git push
