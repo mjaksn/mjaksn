@@ -48,9 +48,12 @@ Read the columns this way. **Tags on main** counts tags that are ancestors of
 and the history stops describing it. **Unreleased** is how far `main` has
 moved since the newest release, which is normal in itself. **Published** is
 what the registries actually serve, asked of them rather than inferred from a
-green publish job. A repository that releases nothing, which is what the shed
-is, shows `none` and `n/a` where those questions do not apply, and the columns
-that say anything about it are CI, PRs and Unmerged.
+green publish job. **CI** is the latest run of each workflow on `main`,
+leaving out any the sweep is told is a fixture rather than a check: toolshed's
+Dungeon Crawl exists to be dispatched at and fails on purpose when fed bad
+input, so its runs are not read. A repository that releases nothing, which is
+what the shed is, shows `none` and `n/a` where those questions do not apply,
+and the columns that say anything about it are CI, PRs and Unmerged.
 
 ## Are you cool enough
 

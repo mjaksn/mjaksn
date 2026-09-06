@@ -43,7 +43,8 @@ OWNER = "mjaksn"
 
 @dataclass
 class Repo:
-    """One repository, and where its version and its artefacts live."""
+    """One repository: where its version and its artefacts live, and which of
+    its workflows are not a check on it."""
 
     name: str
     # Every file that states the version, and how to read it out. They must
@@ -53,6 +54,11 @@ class Repo:
     # Registry paths, without a tag. Both registries are asked, because they
     # are pushed by separate jobs and can therefore come to differ.
     images: list[str] = field(default_factory=list)
+    # Workflows, by name, whose runs say nothing about the repository: a
+    # fixture that exists to be dispatched at and fails on purpose when fed
+    # bad input. The CI column leaves these out rather than going red the
+    # morning after somebody tested the failure path.
+    ignore_workflows: list[str] = field(default_factory=list)
 
 
 REPOS = [
@@ -85,8 +91,10 @@ REPOS = [
     # unrelated scripts with no version file, no tags and nothing published.
     # Version reads none and Unreleased reads n/a for it, rather than the ?
     # that means something could not be read, and the columns that say
-    # anything about it are CI, PRs and Unmerged.
-    Repo("toolshed", versions=[]),
+    # anything about it are CI, PRs and Unmerged. Dungeon Crawl is the
+    # workflow its dispatch-desk tool is tested against, dispatched by hand
+    # and built to fail on bad input, so its runs are not CI.
+    Repo("toolshed", versions=[], ignore_workflows=["Dungeon Crawl"]),
 ]
 
 
@@ -278,9 +286,12 @@ def sweep_one(repo: Repo, tok: str) -> Result:
 
     # CI, as of the most recent run of each workflow on main. A workflow that
     # has never run there is not a failure: it is one that only fires on tags.
+    # A workflow the repository declares as a fixture is not asked at all.
     runs = gh(base + "/actions/runs?branch=main&per_page=20", tok) or {}
     latest: dict[str, dict] = {}
     for run in runs.get("workflow_runs", []):
+        if run["name"] in repo.ignore_workflows:
+            continue
         latest.setdefault(run["name"], run)
     states = {name: run["conclusion"] or run["status"]
               for name, run in latest.items()}
