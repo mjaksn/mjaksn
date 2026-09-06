@@ -18,8 +18,11 @@ list in here, so adding a row there is the whole of adding a repository.
 The same table names the PyPI packages that are mine, and a bump to one of
 those is exempt from the wait: the rule is about other people's releases.
 With `--write` the README also receives the answer: the block between its
-markers is replaced with the links that are old enough, and nothing else
-in the file is touched.
+markers is replaced with the links that are old enough and the ones still
+waiting, each with the moment it clears, and nothing else in the file is
+touched. A pull request that could not be dated is only in the run's own
+output, since a line with no date on it would leave the reader nothing to
+do.
 
 Standard library only, and nothing is cloned. The exit status is always 0.
 An empty list is an ordinary morning, and a registry that will not answer
@@ -300,7 +303,7 @@ def footer(now: datetime) -> str:
 
 
 def approved(verdicts: list[Verdict]) -> str:
-    """The links that are old enough, which is all the README is told."""
+    """The links that are old enough."""
     eligible = [v for v in verdicts if v.eligible]
     if not eligible:
         return "Nothing yet."
@@ -308,17 +311,35 @@ def approved(verdicts: list[Verdict]) -> str:
                      for v in eligible)
 
 
+def waiting(verdicts: list[Verdict]) -> str:
+    """The links that are not old enough yet, each with the moment it will be."""
+    return "\n".join("- %s: [%s](%s), ready %s" % (
+        v.pull.repo, v.pull.title, v.pull.url,
+        v.ready.strftime("%Y-%m-%d %H:%M UTC"))
+        for v in verdicts if not v.eligible and not v.reasons)
+
+
+def block(verdicts: list[Verdict], now: datetime) -> str:
+    """What the README is told: the two dated lists, and when they were made.
+
+    The section around the markers already has a heading, so the second
+    list gets a lead-in line rather than a heading of its own.
+    """
+    body = approved(verdicts)
+    later = waiting(verdicts)
+    if later:
+        body += "\n\nStill waiting:\n\n" + later
+    return body + "\n\n" + footer(now)
+
+
 def report(verdicts: list[Verdict], now: datetime) -> str:
     """The three lists, as markdown that reads the same on a terminal."""
-    waiting = [v for v in verdicts if not v.eligible and not v.reasons]
     unknown = [v for v in verdicts if v.reasons]
 
     lines = ["## Cool enough", "", approved(verdicts)]
-    if waiting:
-        lines += ["", "## Still waiting", ""]
-        lines += ["- %s: [%s](%s), ready %s" % (
-            v.pull.repo, v.pull.title, v.pull.url,
-            v.ready.strftime("%Y-%m-%d %H:%M UTC")) for v in waiting]
+    later = waiting(verdicts)
+    if later:
+        lines += ["", "## Still waiting", "", later]
     if unknown:
         lines += ["", "## Could not tell", ""]
         lines += ["- %s: [%s](%s), %s" % (
@@ -383,7 +404,7 @@ def main() -> int:
         with open(summary, "a", encoding="utf-8") as handle:
             handle.write(body + "\n")
     if args.write:
-        rewrite(args.readme, approved(verdicts) + "\n\n" + footer(now))
+        rewrite(args.readme, block(verdicts, now))
     return 0
 
 
