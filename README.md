@@ -62,14 +62,13 @@ added there is a row checked here.
 
 <!-- cool:start -->
 
-- bravia-http-remote: [ci: bump actions/upload-artifact from 4.6.2 to 7.0.1](https://github.com/mjaksn/bravia-http-remote/pull/22)
-- bravia-http-remote: [ci: bump actions/checkout from 4.2.2 to 7.0.1](https://github.com/mjaksn/bravia-http-remote/pull/21)
+Nothing yet.
 
 Still waiting:
 
 - nettail: [deps: bump python from 3.14.6-slim to 3.14.7-slim](https://github.com/mjaksn/nettail/pull/32), ready 2026-09-08 23:08 UTC
 - readerboard: [deps: bump python from 3.14.6-slim to 3.14.7-slim](https://github.com/mjaksn/readerboard/pull/45), ready 2026-09-08 23:08 UTC
 
-<sub>Checked: 2026-09-06 04:46 UTC</sub>
+<sub>Checked: 2026-09-06 05:10 UTC</sub>
 
 <!-- cool:end -->
