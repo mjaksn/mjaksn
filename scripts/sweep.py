@@ -2,7 +2,7 @@
 
 """Say what is out of step across the repositories.
 
-Seven repositories, four systems: git, GitHub, PyPI, and two container
+Eight repositories, four systems: git, GitHub, PyPI, and two container
 registries. Nothing watches all four at once, so this does, and it does it
 by asking rather than by remembering. Every number below is read at run
 time; nothing here is a copy of what was true when it was written.
@@ -95,6 +95,11 @@ REPOS = [
     # workflow its dispatch-desk tool is tested against, dispatched by hand
     # and built to fail on bad input, so its runs are not CI.
     Repo("toolshed", versions=[], ignore_workflows=["Dungeon Crawl"]),
+    # A desktop tool run from a checkout: no version file, no tags and no
+    # package, so it reads the same way as the shed until it has a release.
+    # It has no workflows yet either, so CI reads `no runs` rather than
+    # success, which is the true answer and not a failure.
+    Repo("Memlapse", versions=[]),
 ]
 
 
@@ -110,7 +115,7 @@ def token() -> str:
         return found.stdout.strip()
     except (OSError, subprocess.CalledProcessError):
         # Unauthenticated works, at sixty requests an hour, which covers one
-        # repository and not seven. Say so here rather than failing halfway
+        # repository and not eight. Say so here rather than failing halfway
         # through against a rate limit nobody was expecting.
         print("warning: no GitHub token, so the rate limit will bite",
               file=sys.stderr)
