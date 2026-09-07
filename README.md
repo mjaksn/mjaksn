@@ -88,3 +88,13 @@ Still waiting:
 <sub>Checked: 2026-09-07 03:03 UTC</sub>
 
 <!-- cool:end -->
+
+## Tooling
+
+Claude Code is my preferred coding assistant, and this is the one place it
+is named. Individual projects, commits and files do not credit the agent or
+model behind them; a credit on every item reads as an advertisement. The
+same thinking puts agent instructions in AGENTS.md rather than one vendor's
+file, and keeps JetBrains and VS Code configurations in parallel. I am not
+in the business of promoting one commercial tool over another, and none of
+them should be a condition of using or adopting anything here.
