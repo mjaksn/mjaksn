@@ -34,14 +34,14 @@ table nobody reads.
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | nettail | 0.13.1 | v0.13.1 | all 18 | none | success | 1 | dependabot/docker/python-3.14.7-slim (+1/-17) | PyPI 0.13.1, GHCR 0.13.1, Docker Hub 0.13.1 |
 | netflume | 0.5.0 | v0.5.0 | all 5 | none | success | 0 | none | PyPI 0.5.0 |
-| lanname | 0.2.1 | v0.2.1 | all 3 | 5 commits | success | 0 | none | PyPI 0.2.1 |
+| lanname | 0.3.0 | v0.3.0 | all 4 | 1 commit | success | 0 | none | PyPI 0.3.0 |
 | readerboard | 0.3.0 | v0.3.0 | all 6 | 6 commits | success | 1 | dependabot/docker/python-3.14.7-slim (+1/-3) | PyPI 0.3.0, GHCR 0.3.0, Docker Hub 0.3.0 |
 | bravia-http-remote | 1.3.0 | v1.3.0 | all 4 | 3 commits | success | 0 | split-app-js (+2/-20) | GHCR 1.3.0, Docker Hub 1.3.0 |
 | cec-ir-bridge | 0.1.1 | v0.1.1 | all 2 | none | success | 0 | none | none |
 | toolshed | none | none | none | n/a | success | 0 | none | none |
-| Memlapse | none | none | none | n/a | success | 1 | content-change-detector (+1/-2), docs-plan-folds (+1/-2), fold-research-items (+8/-0) | none |
+| Memlapse | none | none | none | n/a | success | 0 | content-change-detector (+1/-3), docs-plan-folds (+1/-3), fold-research-items (+27/-1) | none |
 
-<sub>Generated: 2026-09-08 05:41 UTC</sub>
+<sub>Generated: 2026-09-08 11:53 UTC</sub>
 
 <!-- sweep:end -->
 
