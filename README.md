@@ -74,10 +74,9 @@ added there is a row checked here.
 
 <!-- cool:start -->
 
-- nettail: [deps: bump python from 3.14.6-slim to 3.14.7-slim](https://github.com/mjaksn/nettail/pull/32)
-- readerboard: [deps: bump python from 3.14.6-slim to 3.14.7-slim](https://github.com/mjaksn/readerboard/pull/45)
+Nothing yet.
 
-<sub>Checked: 2026-09-09 04:08 UTC</sub>
+<sub>Checked: 2026-09-09 12:25 UTC</sub>
 
 <!-- cool:end -->
 
