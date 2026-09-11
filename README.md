@@ -32,16 +32,15 @@ table nobody reads.
 
 | Repo | Version | Release | Tags on main | Unreleased | CI | PRs | Unmerged | Published |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| nettail | 0.15.0 | v0.15.0 | all 20 | none | success | 0 | mac-docs (+2/-3) | PyPI 0.15.0, GHCR 0.15.0, Docker Hub 0.15.0 |
-| netflume | 0.5.0 | v0.5.0 | all 5 | none | success | 0 | none | PyPI 0.5.0 |
+| nettail | 0.16.0 | v0.16.0 | all 21 | none | success | 0 | mac-docs (+2/-7) | PyPI 0.16.0, GHCR 0.16.0, Docker Hub 0.16.0 |
+| netflume | 0.6.0 | v0.6.0 | all 8 | none | success | 0 | compile-templates (+4/-0) | PyPI 0.6.0 |
 | lanname | 0.5.0 | v0.5.0 | all 6 | none | success | 0 | none | PyPI 0.5.0 |
-| readerboard | 0.3.0 | v0.3.0 | all 6 | 9 commits | success | 1 | real-sign (+14/-0) | PyPI 0.3.0, GHCR 0.3.0, Docker Hub 0.3.0 |
+| readerboard | 0.4.0 | v0.4.0 | all 7 | 1 commit | success | 3 | read-to-eot (+1/-0), string-files (+4/-0), sweep-every-second (+1/-0) | PyPI 0.4.0, GHCR 0.4.0, Docker Hub 0.4.0 |
 | bravia-http-remote | 1.3.0 | v1.3.0 | all 4 | 3 commits | success | 0 | split-app-js (+2/-20) | GHCR 1.3.0, Docker Hub 1.3.0 |
 | cec-ir-bridge | 0.1.1 | v0.1.1 | all 2 | none | success | 0 | none | none |
-| toolshed | none | none | none | n/a | success | 0 | none | none |
-(+5/-6), docs-audit-refresh (+6/-1), docs-plan-folds (+1/-12), fold-research-items (+27/-10), jit-allowlist (+6/-8), live-rewrite-while-watching (+5/-9), record-sample-facts (+4/-5), rewrite-history (+27/-2) | none |
+| toolshed | none | none | none | n/a | success | 1 | dependabot/pip/dot-github/ruff-0.16.6 (+1/-2) | none |
 
-<sub>Generated: 2026-09-10 12:06 UTC</sub>
+<sub>Generated: 2026-09-11 07:24 UTC</sub>
 
 <!-- sweep:end -->
 
