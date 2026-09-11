@@ -34,12 +34,12 @@ table nobody reads.
 | nettail | 0.16.0 | v0.16.0 | all 21 | none | success | 0 | mac-docs (+2/-7) | PyPI 0.16.0, GHCR 0.16.0, Docker Hub 0.16.0 |
 | netflume | 0.6.0 | v0.6.0 | all 8 | none | success | 0 | compile-templates (+4/-0) | PyPI 0.6.0 |
 | lanname | 0.5.0 | v0.5.0 | all 6 | none | success | 0 | none | PyPI 0.5.0 |
-| readerboard | 0.5.0 | v0.5.0 | all 8 | none | success | 0 | none | PyPI 0.5.0, GHCR 0.5.0, Docker Hub 0.5.0 |
+| readerboard | 0.5.0 | v0.5.0 | all 8 | 1 commit | success | 3 | cut-0.5.1 (+1/-0), dependabot/pip/anyio-gte-4.14.2-and-lt-4.16 (+1/-0), dots-spike (+4/-0) | PyPI 0.5.0, GHCR 0.5.0, Docker Hub 0.5.0 |
 | bravia-http-remote | 1.3.0 | v1.3.0 | all 4 | 3 commits | success | 0 | split-app-js (+2/-20) | GHCR 1.3.0, Docker Hub 1.3.0 |
 | cec-ir-bridge | 0.1.1 | v0.1.1 | all 2 | none | success | 0 | none | none |
 | toolshed | none | none | none | n/a | success | 0 | none | none |
 
-<sub>Generated: 2026-09-11 11:56 UTC</sub>
+<sub>Generated: 2026-09-11 22:51 UTC</sub>
 
 <!-- sweep:end -->
 
