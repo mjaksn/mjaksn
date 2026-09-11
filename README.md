@@ -39,7 +39,7 @@ table nobody reads.
 | bravia-http-remote | 1.3.0 | v1.3.0 | all 4 | 3 commits | success | 0 | split-app-js (+2/-20) | GHCR 1.3.0, Docker Hub 1.3.0 |
 | cec-ir-bridge | 0.1.1 | v0.1.1 | all 2 | none | success | 0 | none | none |
 | toolshed | none | none | none | n/a | success | 0 | none | none |
-| Memlapse | none | none | none | n/a | success | 0 | allowlist-in-recording (+3/-3), calibrate-top-band (+12/-7), content-change-detector (+1/-12), docs-audit (+5/-6), docs-audit-refresh (+6/-1), docs-plan-folds (+1/-12), fold-research-items (+27/-10), jit-allowlist (+6/-8), live-rewrite-while-watching (+5/-9), record-sample-facts (+4/-5), rewrite-history (+27/-2) | none |
+(+5/-6), docs-audit-refresh (+6/-1), docs-plan-folds (+1/-12), fold-research-items (+27/-10), jit-allowlist (+6/-8), live-rewrite-while-watching (+5/-9), record-sample-facts (+4/-5), rewrite-history (+27/-2) | none |
 
 <sub>Generated: 2026-09-10 12:06 UTC</sub>
 
