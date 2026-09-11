@@ -99,7 +99,9 @@ REPOS = [
     # package, so it reads the same way as the shed until it has a release.
     # It has no workflows yet either, so CI reads `no runs` rather than
     # success, which is the true answer and not a failure.
-    Repo("Memlapse", versions=[]),
+
+    # TODO: Re-enable after release and name is fixed up
+    # Repo("memlapse", versions=[]),
 ]
 
 
