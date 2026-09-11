@@ -72,9 +72,9 @@ added there is a row checked here.
 
 <!-- cool:start -->
 
-- toolshed: [ci: bump ruff from 0.16.5 to 0.16.6 in /.github](https://github.com/mjaksn/toolshed/pull/21)
+Nothing yet.
 
-<sub>Checked: 2026-09-11 07:16 UTC</sub>
+<sub>Checked: 2026-09-11 12:17 UTC</sub>
 
 <!-- cool:end -->
 
