@@ -34,12 +34,12 @@ table nobody reads.
 | nettail | 0.17.0 | v0.17.0 | all 22 | 3 commits | success | 0 | mac-docs (+2/-12) | PyPI 0.17.0, GHCR 0.17.0, Docker Hub 0.17.0 |
 | netflume | 0.6.0 | v0.6.0 | all 8 | none | success | 0 | compile-templates (+4/-0) | PyPI 0.6.0 |
 | lanname | 0.5.0 | v0.5.0 | all 6 | none | success | 0 | none | PyPI 0.5.0 |
-| readerboard | 0.6.0 | v0.6.0 | all 9 | 6 commits | success | 3 | alert-lift (+2/-1), dependabot/pip/anyio-gte-4.14.2-and-lt-4.16 (+1/-13), pool-from-sign (+3/-6), refresh-asks-the-sign (+3/-1) | PyPI 0.6.0, GHCR 0.6.0, Docker Hub 0.6.0 |
+| readerboard | 0.6.0 | v0.6.0 | all 9 | 6 commits | success | 3 | alert-lift (+4/-1), dependabot/pip/anyio-gte-4.14.2-and-lt-4.16 (+1/-13), pool-from-sign (+3/-6), refresh-asks-the-sign (+3/-1) | PyPI 0.6.0, GHCR 0.6.0, Docker Hub 0.6.0 |
 | bravia-http-remote | 1.3.0 | v1.3.0 | all 4 | 3 commits | success | 0 | split-app-js (+2/-20) | GHCR 1.3.0, Docker Hub 1.3.0 |
 | cec-ir-bridge | 0.1.1 | v0.1.1 | all 2 | none | success | 0 | none | none |
 | toolshed | none | none | none | n/a | success | 0 | none | none |
 
-<sub>Generated: 2026-09-14 13:29 UTC</sub>
+<sub>Generated: 2026-09-15 03:58 UTC</sub>
 
 <!-- sweep:end -->
 
