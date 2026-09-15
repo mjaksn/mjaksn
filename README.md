@@ -31,7 +31,7 @@ table nobody reads.
 
 | Repo | Version | Release | Tags on main | Unreleased | CI | PRs | Unmerged | Published |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| nettail | 0.17.0 | v0.17.0 | all 22 | 3 commits | success | 0 | mac-docs (+2/-12) | PyPI 0.17.0, GHCR 0.17.0, Docker Hub 0.17.0 |
+| nettail | 0.18.0 | v0.17.0 | all 22 | 5 commits | success | 2 | dependabot/docker/python-cad9a2c (+1/-1), mac-docs (+2/-14), restore-debug (+1/-0) | PyPI 0.17.0, GHCR missing 0.18.0, Docker Hub missing 0.18.0 |
 | netflume | 0.6.0 | v0.6.0 | all 8 | none | success | 0 | compile-templates (+4/-0) | PyPI 0.6.0 |
 | lanname | 0.5.0 | v0.5.0 | all 6 | none | success | 0 | none | PyPI 0.5.0 |
 | readerboard | 0.6.0 | v0.6.0 | all 9 | 6 commits | success | 3 | alert-lift (+4/-1), dependabot/pip/anyio-gte-4.14.2-and-lt-4.16 (+1/-13), pool-from-sign (+3/-6), refresh-asks-the-sign (+3/-1) | PyPI 0.6.0, GHCR 0.6.0, Docker Hub 0.6.0 |
@@ -39,7 +39,14 @@ table nobody reads.
 | cec-ir-bridge | 0.1.1 | v0.1.1 | all 2 | none | success | 0 | none | none |
 | toolshed | none | none | none | n/a | success | 0 | none | none |
 
-<sub>Generated: 2026-09-15 03:58 UTC</sub>
+Worth knowing:
+
+- nettail: latest release v0.17.0 trails main at 0.18.0
+- nettail: PyPI has 0.17.0, main says 0.18.0
+- nettail: ghcr.io/mjaksn/nettail has no 0.18.0 tag
+- nettail: docker.io/mjaksn/nettail has no 0.18.0 tag
+
+<sub>Generated: 2026-09-15 12:21 UTC</sub>
 
 <!-- sweep:end -->
 
