@@ -31,7 +31,7 @@ table nobody reads.
 
 | Repo | Version | Release | Tags on main | Unreleased | CI | PRs | Unmerged | Published |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| nettail | 0.18.0 | v0.17.0 | all 22 | 7 commits | success | 2 | dependabot/docker/python-cad9a2c (+1/-3), mac-docs (+2/-16), restore-thread (+12/-0) | PyPI 0.17.0, GHCR missing 0.18.0, Docker Hub missing 0.18.0 |
+| nettail | 0.18.0 | v0.17.0 | all 22 | 7 commits | success | 2 | dependabot/docker/python-cad9a2c (+1/-3), mac-docs (+2/-16), restore-thread (+13/-0) | PyPI 0.17.0, GHCR missing 0.18.0, Docker Hub missing 0.18.0 |
 | netflume | 0.6.0 | v0.6.0 | all 8 | none | success | 0 | compile-templates (+4/-0) | PyPI 0.6.0 |
 | lanname | 0.5.0 | v0.5.0 | all 6 | none | success | 0 | none | PyPI 0.5.0 |
 | readerboard | 0.6.0 | v0.6.0 | all 9 | 8 commits | success | 1 | dependabot/pip/anyio-gte-4.14.2-and-lt-4.16 (+1/-15), pool-from-sign (+3/-8) | PyPI 0.6.0, GHCR 0.6.0, Docker Hub 0.6.0 |
@@ -46,7 +46,7 @@ Worth knowing:
 - nettail: ghcr.io/mjaksn/nettail has no 0.18.0 tag
 - nettail: docker.io/mjaksn/nettail has no 0.18.0 tag
 
-<sub>Generated: 2026-09-16 12:20 UTC</sub>
+<sub>Generated: 2026-09-18 11:58 UTC</sub>
 
 <!-- sweep:end -->
 
