@@ -72,9 +72,11 @@ added there is a row checked here.
 
 <!-- cool:start -->
 
+- nettail: [ci: bump docker/build-push-action from 7.3.0 to 7.4.0](https://github.com/mjaksn/nettail/pull/82)
+- nettail: [ci: bump docker/setup-buildx-action from 4.3.0 to 4.4.1](https://github.com/mjaksn/nettail/pull/81)
 - toolshed: [ci: bump ruff from 0.16.6 to 0.16.8 in /.github](https://github.com/mjaksn/toolshed/pull/29)
 
-<sub>Checked: 2026-09-26 12:19 UTC</sub>
+<sub>Checked: 2026-10-01 14:40 UTC</sub>
 
 <!-- cool:end -->
 
