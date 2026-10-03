@@ -77,13 +77,15 @@ added there is a row checked here.
 - netflume: [ci: bump idna from 3.19 to 3.20 in /.github/requirements](https://github.com/mjaksn/netflume/pull/63)
 - netflume: [ci: bump build from 1.6.0 to 1.6.1 in /.github/requirements](https://github.com/mjaksn/netflume/pull/62)
 - netflume: [ci: bump readme-renderer from 45.0 to 46.0 in /.github/requirements](https://github.com/mjaksn/netflume/pull/61)
+- readerboard: [deps: bump python from 3.14.7-slim to 3.15.0rc2-slim](https://github.com/mjaksn/readerboard/pull/88)
 - readerboard: [ci: bump docker/setup-buildx-action from 4.3.0 to 4.4.1](https://github.com/mjaksn/readerboard/pull/87)
 - readerboard: [ci: bump docker/build-push-action from 7.3.0 to 7.4.0](https://github.com/mjaksn/readerboard/pull/86)
+- bravia-http-remote: [deps: bump python from 3.14.6-slim to 3.15.0rc2-slim](https://github.com/mjaksn/bravia-http-remote/pull/27)
 - bravia-http-remote: [ci: bump docker/setup-buildx-action from 4.3.0 to 4.4.1](https://github.com/mjaksn/bravia-http-remote/pull/26)
 - bravia-http-remote: [ci: bump docker/build-push-action from 7.3.0 to 7.4.0](https://github.com/mjaksn/bravia-http-remote/pull/25)
-- toolshed: [ci: bump ruff from 0.16.6 to 0.16.8 in /.github](https://github.com/mjaksn/toolshed/pull/29)
+- toolshed: [ci: bump ruff from 0.16.6 to 0.16.9 in /.github](https://github.com/mjaksn/toolshed/pull/32)
 
-<sub>Checked: 2026-10-02 14:00 UTC</sub>
+<sub>Checked: 2026-10-03 12:40 UTC</sub>
 
 <!-- cool:end -->
 
