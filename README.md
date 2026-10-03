@@ -34,12 +34,12 @@ table nobody reads.
 | nettail | 0.20.1 | v0.20.1 | all 26 | none | success | 2 | dependabot/github_actions/docker/build-push-action-7.4.0 (+1/-0), dependabot/github_actions/docker/setup-buildx-action-4.4.1 (+1/-0), mac-docs (+2/-28) | PyPI 0.20.1, GHCR 0.20.1, Docker Hub 0.20.1 |
 | netflume | 0.6.0 | v0.6.0 | all 8 | none | success | 3 | compile-templates (+4/-0), dependabot/pip/dot-github/requirements/build-1.6.1 (+1/-0), dependabot/pip/dot-github/requirements/idna-3.20 (+1/-0), dependabot/pip/dot-github/requirements/readme-renderer-46.0 (+1/-0) | PyPI 0.6.0 |
 | lanname | 0.5.0 | v0.5.0 | all 6 | none | success | 0 | none | PyPI 0.5.0 |
-| readerboard | 0.6.0 | v0.6.0 | all 9 | 10 commits | success | 5 | dependabot/github_actions/docker/build-push-action-7.4.0 (+1/-0), dependabot/github_actions/docker/setup-buildx-action-4.4.1 (+1/-0), dependabot/pip/anyio-gte-4.14.2-and-lt-4.16 (+1/-17), picture-spike-notes (+1/-0), pool-from-sign (+3/-10), starlette-1-7 (+1/-0) | PyPI 0.6.0, GHCR 0.6.0, Docker Hub 0.6.0 |
-| bravia-http-remote | 1.3.0 | v1.3.0 | all 4 | 3 commits | success | 2 | dependabot/github_actions/docker/build-push-action-7.4.0 (+1/-0), dependabot/github_actions/docker/setup-buildx-action-4.4.1 (+1/-0), split-app-js (+2/-20) | GHCR 1.3.0, Docker Hub 1.3.0 |
+| readerboard | 0.6.0 | v0.6.0 | all 9 | 10 commits | success | 7 | dependabot/docker/python-3.15.0rc2-slim (+1/-0), dependabot/github_actions/docker/build-push-action-7.4.0 (+1/-0), dependabot/github_actions/docker/setup-buildx-action-4.4.1 (+1/-0), dependabot/pip/anyio-gte-4.14.2-and-lt-4.16 (+1/-17), dependabot/pip/uvicorn-gte-0.52.1-and-lt-0.55 (+1/-0), picture-spike-notes (+1/-0), pool-from-sign (+3/-10), starlette-1-7 (+1/-0) | PyPI 0.6.0, GHCR 0.6.0, Docker Hub 0.6.0 |
+| bravia-http-remote | 1.3.0 | v1.3.0 | all 4 | 3 commits | success | 3 | dependabot/docker/python-3.15.0rc2-slim (+1/-0), dependabot/github_actions/docker/build-push-action-7.4.0 (+1/-0), dependabot/github_actions/docker/setup-buildx-action-4.4.1 (+1/-0), split-app-js (+2/-20) | GHCR 1.3.0, Docker Hub 1.3.0 |
 | cec-ir-bridge | 0.1.1 | v0.1.1 | all 2 | none | success | 0 | none | none |
-| toolshed | none | none | none | n/a | success | 1 | dependabot/pip/dot-github/ruff-0.16.8 (+1/-3) | none |
+| toolshed | none | none | none | n/a | success | 1 | dependabot/pip/dot-github/ruff-0.16.9 (+1/-0) | none |
 
-<sub>Generated: 2026-10-02 13:21 UTC</sub>
+<sub>Generated: 2026-10-03 12:09 UTC</sub>
 
 <!-- sweep:end -->
 
