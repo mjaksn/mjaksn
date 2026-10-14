@@ -31,15 +31,15 @@ table nobody reads.
 
 | Repo | Version | Release | Tags on main | Unreleased | CI | PRs | Unmerged | Published |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| nettail | 0.20.1 | v0.20.1 | all 26 | none | success | 3 | dependabot/docker/python-51dafde (+1/-0), dependabot/github_actions/docker/build-push-action-7.4.0 (+1/-0), dependabot/github_actions/docker/setup-buildx-action-4.4.1 (+1/-0), mac-docs (+2/-28) | PyPI 0.20.1, GHCR 0.20.1, Docker Hub 0.20.1 |
+| nettail | 0.20.1 | v0.20.1 | all 26 | none | success | 3 | dependabot/docker/python-51dafde (+1/-0), dependabot/github_actions/docker/build-push-action-7.4.0 (+1/-0), dependabot/github_actions/docker/setup-buildx-action-4.4.1 (+1/-0) | PyPI 0.20.1, GHCR 0.20.1, Docker Hub 0.20.1 |
 | netflume | 0.6.0 | v0.6.0 | all 8 | none | success | 3 | compile-templates (+4/-0), dependabot/pip/dot-github/requirements/build-1.6.1 (+1/-0), dependabot/pip/dot-github/requirements/idna-3.20 (+1/-0), dependabot/pip/dot-github/requirements/readme-renderer-46.0 (+1/-0) | PyPI 0.6.0 |
 | lanname | 0.5.0 | v0.5.0 | all 6 | none | success | 0 | none | PyPI 0.5.0 |
-| readerboard | 0.7.0 | v0.7.0 | all 10 | none | success | 7 | dependabot/docker/python-51dafde (+1/-0), dependabot/github_actions/docker/build-push-action-7.4.0 (+1/-2), dependabot/github_actions/docker/setup-buildx-action-4.4.1 (+1/-2), dependabot/pip/anyio-gte-4.14.2-and-lt-4.16 (+1/-19), dependabot/pip/uvicorn-gte-0.52.1-and-lt-0.55 (+1/-2), picture-spike-notes (+1/-2), pool-from-sign (+3/-12), starlette-1-7 (+1/-2) | PyPI 0.7.0, GHCR 0.7.0, Docker Hub 0.7.0 |
-| bravia-http-remote | 1.3.0 | v1.3.0 | all 4 | 3 commits | success | 3 | dependabot/docker/python-3.15.0rc2-slim (+1/-0), dependabot/github_actions/docker/build-push-action-7.4.0 (+1/-0), dependabot/github_actions/docker/setup-buildx-action-4.4.1 (+1/-0), split-app-js (+2/-20) | GHCR 1.3.0, Docker Hub 1.3.0 |
-| cec-ir-bridge | 0.1.2 | v0.1.2 | all 3 | none | success | 0 | none | none |
-| toolshed | none | none | none | n/a | success | 1 | dependabot/pip/dot-github/ruff-0.16.10 (+1/-0) | none |
+| readerboard | 0.7.0 | v0.7.0 | all 10 | 2 commits | success | 7 | dependabot/docker/python-51dafde (+1/-2), dependabot/github_actions/docker/build-push-action-7.4.0 (+1/-4), dependabot/github_actions/docker/setup-buildx-action-4.4.1 (+1/-4), dependabot/pip/anyio-gte-4.14.2-and-lt-4.16 (+1/-21), dependabot/pip/uvicorn-gte-0.52.1-and-lt-0.55 (+1/-4), picture-spike-notes (+1/-4), pool-from-sign (+3/-14), starlette-1-7 (+1/-4) | PyPI 0.7.0, GHCR 0.7.0, Docker Hub 0.7.0 |
+| bravia-http-remote | 1.4.0 | v1.4.0 | all 5 | none | success | 3 | dependabot/docker/python-3.15.0rc2-slim (+1/-2), dependabot/github_actions/docker/build-push-action-7.4.0 (+1/-2), dependabot/github_actions/docker/setup-buildx-action-4.4.1 (+1/-2), split-app-js (+2/-22) | GHCR 1.4.0, Docker Hub 1.4.0 |
+| cec-ir-bridge | 0.1.3 | v0.1.3 | all 4 | none | success | 0 | none | none |
+| toolshed | none | none | none | n/a | success | 1 | dependabot/pip/dot-github/ruff-0.16.10 (+1/-1) | none |
 
-<sub>Generated: 2026-10-13 07:17 UTC</sub>
+<sub>Generated: 2026-10-14 07:09 UTC</sub>
 
 <!-- sweep:end -->
 
