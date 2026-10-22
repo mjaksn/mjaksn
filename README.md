@@ -35,11 +35,11 @@ table nobody reads.
 | netflume | 0.6.0 | v0.6.0 | all 8 | 3 commits | success | 0 | compile-templates (+4/-3) | PyPI 0.6.0 |
 | lanname | 0.5.0 | v0.5.0 | all 6 | none | success | 0 | none | PyPI 0.5.0 |
 | readerboard | 0.7.0 | v0.7.0 | all 10 | 4 commits | success | 6 | dependabot/docker/python-3.14.8-slim (+1/-0), dependabot/pip/anyio-gte-4.14.2-and-lt-4.16 (+1/-23), dependabot/pip/fastapi-gte-0.141.1-and-lt-0.144 (+1/-0), dependabot/pip/uvicorn-gte-0.52.1-and-lt-0.55 (+1/-6), picture-spike-notes (+1/-6), pool-from-sign (+3/-16), starlette-1-7 (+1/-6) | PyPI 0.7.0, GHCR 0.7.0, Docker Hub 0.7.0 |
-| bravia-http-remote | 1.4.0 | v1.4.0 | all 5 | 3 commits | success | 1 | dependabot/docker/python-3.15.0rc3-slim (+1/-0), split-app-js (+2/-25) | GHCR 1.4.0, Docker Hub 1.4.0 |
+| bravia-http-remote | 1.4.0 | v1.4.0 | all 5 | 4 commits | success | 0 | split-app-js (+2/-26) | GHCR 1.4.0, Docker Hub 1.4.0 |
 | cec-ir-bridge | 0.1.3 | v0.1.3 | all 4 | none | success | 0 | none | none |
-| toolshed | none | none | none | n/a | success | 1 | dependabot/pip/dot-github/ruff-0.17.0 (+1/-0) | none |
+| toolshed | none | none | none | n/a | success | 0 | none | none |
 
-<sub>Generated: 2026-10-20 07:09 UTC</sub>
+<sub>Generated: 2026-10-22 07:11 UTC</sub>
 
 <!-- sweep:end -->
 
