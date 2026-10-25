@@ -37,9 +37,9 @@ table nobody reads.
 | readerboard | 0.7.0 | v0.7.0 | all 10 | 4 commits | success | 6 | dependabot/docker/python-3.14.8-slim (+1/-0), dependabot/pip/anyio-gte-4.14.2-and-lt-4.16 (+1/-23), dependabot/pip/fastapi-gte-0.141.1-and-lt-0.144 (+1/-0), dependabot/pip/uvicorn-gte-0.52.1-and-lt-0.55 (+1/-6), picture-spike-notes (+1/-6), pool-from-sign (+3/-16), starlette-1-7 (+1/-6) | PyPI 0.7.0, GHCR 0.7.0, Docker Hub 0.7.0 |
 | bravia-http-remote | 1.4.0 | v1.4.0 | all 5 | 4 commits | success | 0 | split-app-js (+2/-26) | GHCR 1.4.0, Docker Hub 1.4.0 |
 | cec-ir-bridge | 0.1.3 | v0.1.3 | all 4 | none | success | 0 | none | none |
-| toolshed | none | none | none | n/a | success | 1 | dependabot/pip/dot-github/ruff-0.17.1 (+1/-0) | none |
+| toolshed | none | none | none | n/a | success | 2 | add-borg-docker (+39/-0), dependabot/pip/dot-github/ruff-0.17.1 (+1/-0) | none |
 
-<sub>Generated: 2026-10-24 07:05 UTC</sub>
+<sub>Generated: 2026-10-25 07:06 UTC</sub>
 
 <!-- sweep:end -->
 
