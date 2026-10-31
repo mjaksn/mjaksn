@@ -73,9 +73,11 @@ added there is a row checked here.
 <!-- cool:start -->
 
 - nettail: [deps: bump python from 3.14.7-slim to 3.14.8-slim](https://github.com/mjaksn/nettail/pull/84)
-- readerboard: [deps: bump python from 3.14.7-slim to 3.14.8-slim](https://github.com/mjaksn/readerboard/pull/95)
+- readerboard: [deps: bump python from 3.14.7-slim to 3.15.0-slim](https://github.com/mjaksn/readerboard/pull/97)
+- bravia-http-remote: [deps: bump python from 3.15.0rc3-slim to 3.15.0-slim](https://github.com/mjaksn/bravia-http-remote/pull/31)
+- toolshed: [ci: bump ruff from 0.17.1 to 0.17.2 in /.github](https://github.com/mjaksn/toolshed/pull/42)
 
-<sub>Checked: 2026-10-29 07:34 UTC</sub>
+<sub>Checked: 2026-10-31 07:33 UTC</sub>
 
 <!-- cool:end -->
 
