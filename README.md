@@ -72,10 +72,10 @@ added there is a row checked here.
 
 <!-- cool:start -->
 
+- nettail: [deps: bump python from 3.14.7-slim to 3.15.0-slim](https://github.com/mjaksn/nettail/pull/88)
 - nettail: [ci: bump actions/setup-python from 7.0.0 to 7.1.0](https://github.com/mjaksn/nettail/pull/87)
 - nettail: [ci: bump actions/upload-artifact from 7.0.1 to 7.0.2](https://github.com/mjaksn/nettail/pull/86)
 - nettail: [ci: bump pypa/gh-action-pypi-publish from 1.14.2 to 1.14.3](https://github.com/mjaksn/nettail/pull/85)
-- nettail: [deps: bump python from 3.14.7-slim to 3.14.8-slim](https://github.com/mjaksn/nettail/pull/84)
 - netflume: [ci: bump pyproject-hooks from 1.2.0 to 1.3.3 in /.github/requirements](https://github.com/mjaksn/netflume/pull/69)
 - netflume: [ci: bump certifi from 2026.7.22 to 2026.10.23 in /.github/requirements](https://github.com/mjaksn/netflume/pull/68)
 - netflume: [ci: bump ruff from 0.16.5 to 0.17.2 in /.github/requirements](https://github.com/mjaksn/netflume/pull/67)
@@ -98,7 +98,7 @@ added there is a row checked here.
 - toolshed: [ci: bump actions/setup-python from 7.0.0 to 7.1.0](https://github.com/mjaksn/toolshed/pull/45)
 - toolshed: [ci: bump ruff from 0.17.1 to 0.17.2 in /.github](https://github.com/mjaksn/toolshed/pull/42)
 
-<sub>Checked: 2026-11-02 07:33 UTC</sub>
+<sub>Checked: 2026-11-03 07:34 UTC</sub>
 
 <!-- cool:end -->
 
