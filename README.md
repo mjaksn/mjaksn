@@ -87,9 +87,6 @@ added there is a row checked here.
 - lanname: [ci: bump actions/download-artifact from 8.0.1 to 8.0.2](https://github.com/mjaksn/lanname/pull/44)
 - lanname: [ci: bump actions/upload-artifact from 7.0.1 to 7.0.2](https://github.com/mjaksn/lanname/pull/43)
 - lanname: [ci: bump actions/setup-python from 7.0.0 to 7.1.0](https://github.com/mjaksn/lanname/pull/42)
-- readerboard: [ci: bump actions/setup-python from 7.0.0 to 7.1.0](https://github.com/mjaksn/readerboard/pull/100)
-- readerboard: [ci: bump pypa/gh-action-pypi-publish from 1.14.2 to 1.14.3](https://github.com/mjaksn/readerboard/pull/99)
-- readerboard: [ci: bump actions/download-artifact from 8.0.1 to 8.0.2](https://github.com/mjaksn/readerboard/pull/98)
 - readerboard: [deps: bump python from 3.14.7-slim to 3.15.0-slim](https://github.com/mjaksn/readerboard/pull/97)
 - bravia-http-remote: [ci: bump actions/upload-artifact from 7.0.1 to 7.0.2](https://github.com/mjaksn/bravia-http-remote/pull/34)
 - bravia-http-remote: [ci: bump actions/download-artifact from 8.0.1 to 8.0.2](https://github.com/mjaksn/bravia-http-remote/pull/33)
@@ -98,7 +95,7 @@ added there is a row checked here.
 - toolshed: [ci: bump actions/setup-python from 7.0.0 to 7.1.0](https://github.com/mjaksn/toolshed/pull/45)
 - toolshed: [ci: bump ruff from 0.17.1 to 0.17.2 in /.github](https://github.com/mjaksn/toolshed/pull/42)
 
-<sub>Checked: 2026-11-03 07:34 UTC</sub>
+<sub>Checked: 2026-11-06 07:34 UTC</sub>
 
 <!-- cool:end -->
 
