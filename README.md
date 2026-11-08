@@ -37,9 +37,9 @@ table nobody reads.
 | readerboard | 0.8.3 | v0.8.3 | all 15 | none | success | 5 | dependabot/docker/python-3.15.0-slim (+1/-9), dependabot/pip/anyio-gte-4.14.2-and-lt-4.16 (+1/-41), dependabot/pip/fastapi-gte-0.141.1-and-lt-0.163 (+1/-0), dependabot/pip/pytest-gte-9.1.1-and-lt-9.3 (+1/-0), pool-from-sign (+3/-34), starlette-1-7 (+1/-24) | PyPI 0.8.3, GHCR 0.8.3, Docker Hub 0.8.3 |
 | bravia-http-remote | 1.4.0 | v1.4.0 | all 5 | 4 commits | success | 4 | dependabot/docker/python-3.15.1-slim (+1/-0), dependabot/github_actions/actions/download-artifact-8.0.2 (+1/-0), dependabot/github_actions/actions/setup-node-7.1.0 (+1/-0), dependabot/github_actions/actions/upload-artifact-7.0.2 (+1/-0), split-app-js (+2/-26) | GHCR 1.4.0, Docker Hub 1.4.0 |
 | cec-ir-bridge | 0.1.4 | v0.1.4 | all 5 | none | success | 0 | none | none |
-| toolshed | none | none | none | n/a | success | 2 | dependabot/github_actions/actions/setup-python-7.1.0 (+1/-4), dependabot/pip/dot-github/ruff-0.17.3 (+1/-0) | none |
+| toolshed | none | none | none | n/a | success | 2 | dependabot/github_actions/actions/setup-python-7.1.0 (+1/-6), dependabot/pip/dot-github/ruff-0.17.3 (+1/-2) | none |
 
-<sub>Generated: 2026-11-07 07:02 UTC</sub>
+<sub>Generated: 2026-11-08 07:04 UTC</sub>
 
 <!-- sweep:end -->
 
