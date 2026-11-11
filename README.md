@@ -31,15 +31,15 @@ table nobody reads.
 
 | Repo | Version | Release | Tags on main | Unreleased | CI | PRs | Unmerged | Published |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| nettail | 0.20.1 | v0.20.1 | all 26 | 2 commits | success | 4 | dependabot/docker/python-3.15.0-slim (+1/-0), dependabot/github_actions/actions/setup-python-7.1.0 (+1/-0), dependabot/github_actions/actions/upload-artifact-7.0.2 (+1/-0), dependabot/github_actions/pypa/gh-action-pypi-publish-1.14.3 (+1/-0) | PyPI 0.20.1, GHCR 0.20.1, Docker Hub 0.20.1 |
-| netflume | 0.6.0 | v0.6.0 | all 8 | 3 commits | success | 6 | compile-templates (+4/-3), dependabot/github_actions/actions/download-artifact-8.0.2 (+1/-0), dependabot/github_actions/actions/setup-python-7.1.0 (+1/-0), dependabot/github_actions/actions/upload-artifact-7.0.2 (+1/-0), dependabot/pip/dot-github/requirements/certifi-2026.10.23 (+1/-0), dependabot/pip/dot-github/requirements/pyproject-hooks-1.3.3 (+1/-0), dependabot/pip/dot-github/requirements/ruff-0.17.2 (+1/-0) | PyPI 0.6.0 |
-| lanname | 0.5.0 | v0.5.0 | all 6 | none | success | 5 | dependabot/github_actions/actions/download-artifact-8.0.2 (+1/-0), dependabot/github_actions/actions/setup-python-7.1.0 (+1/-0), dependabot/github_actions/actions/upload-artifact-7.0.2 (+1/-0), dependabot/pip/tools/poker/pyside6-essentials-6.12.0 (+1/-0), dependabot/pip/tools/poker/shiboken6-6.12.0 (+1/-0) | PyPI 0.5.0 |
+| nettail | 0.20.1 | v0.20.1 | all 26 | 5 commits | success | 1 | dependabot/docker/python-3.15.0-slim (+1/-3) | PyPI 0.20.1, GHCR 0.20.1, Docker Hub 0.20.1 |
+| netflume | 0.6.0 | v0.6.0 | all 8 | 9 commits | success | 0 | compile-templates (+4/-9) | PyPI 0.6.0 |
+| lanname | 0.5.0 | v0.5.0 | all 6 | 6 commits | success | 0 | none | PyPI 0.5.0 |
 | readerboard | 0.8.3 | v0.8.3 | all 15 | none | success | 5 | dependabot/docker/python-3.15.0-slim (+1/-9), dependabot/pip/anyio-gte-4.14.2-and-lt-4.16 (+1/-41), dependabot/pip/fastapi-gte-0.141.1-and-lt-0.163 (+1/-0), dependabot/pip/pytest-gte-9.1.1-and-lt-9.3 (+1/-0), pool-from-sign (+3/-34), starlette-1-7 (+1/-24) | PyPI 0.8.3, GHCR 0.8.3, Docker Hub 0.8.3 |
-| bravia-http-remote | 1.4.0 | v1.4.0 | all 5 | 4 commits | success | 4 | dependabot/docker/python-3.15.1-slim (+1/-0), dependabot/github_actions/actions/download-artifact-8.0.2 (+1/-0), dependabot/github_actions/actions/setup-node-7.1.0 (+1/-0), dependabot/github_actions/actions/upload-artifact-7.0.2 (+1/-0), split-app-js (+2/-26) | GHCR 1.4.0, Docker Hub 1.4.0 |
+| bravia-http-remote | 1.4.0 | v1.4.0 | all 5 | 8 commits | success | 0 | split-app-js (+2/-30) | GHCR 1.4.0, Docker Hub 1.4.0 |
 | cec-ir-bridge | 0.1.4 | v0.1.4 | all 5 | none | success | 0 | none | none |
 | toolshed | none | none | none | n/a | success | 2 | dependabot/github_actions/actions/setup-python-7.1.0 (+1/-6), dependabot/pip/dot-github/ruff-0.17.3 (+1/-2) | none |
 
-<sub>Generated: 2026-11-08 07:04 UTC</sub>
+<sub>Generated: 2026-11-11 07:03 UTC</sub>
 
 <!-- sweep:end -->
 
