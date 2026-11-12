@@ -15,79 +15,80 @@ This plan is tracked in the
 [readerboard#25](https://github.com/mjaksn/readerboard/issues/25) as its pinned
 table of contents. The issue list is live state; this page is the reasoning.
 
-## Two hard gates
+## Two hard gates, both cleared
 
-Everything else on this page can flex. These two cannot, because each would be
-expensive or embarrassing to fix after the tag.
-
-### 1. Run the protocol spike against the real sign
+### 1. Run the protocol spike against the real sign: done
 
 Tracked in [readerboard#19](https://github.com/mjaksn/readerboard/issues/19).
 
-The design itself is still contingent on question 1 in `docs/protocol-notes.md`:
-whether the sign rotates through several files without blanking between them. The
-implementation this project replaced wrote everything to the priority file, so
-multi-file rotation has never actually been observed on this sign. If it is not
-seamless, the fallback is server-side rotation, which reshapes the registry, the
-settings, and probably the API.
+The design was contingent on whether the sign rotates through several files
+without blanking between them. Three sessions with the sign in September 2026
+answered that and ten other questions, recorded with the measurement behind each
+in `docs/protocol-notes.md`. Rotation is seamless near enough, so the
+sign-driven design stands. A run sequence write does not cancel an alert. The sign
+answers reads through the Ethernet adapter. The inter-packet delay was measured
+and its default halved to 0.25s.
 
-One session with `scripts/protocol_spike.py` also settles whether a run sequence
-write cancels a running alert, which decides the fate of the deferral in
-`MessageRegistry._apply_run_sequence`, and it measures the real inter-packet
-delay. The unmeasured 0.5 s default in `inter_packet_delay` is itself part of the
-surface being frozen.
-
-### 2. Settle the `constants.py` provenance
+### 2. Settle the `constants.py` provenance: done
 
 Tracked in [readerboard#20](https://github.com/mjaksn/readerboard/issues/20).
 
-The README openly says the vendored constants table is the one part of the
-project not cleanly MIT. That is an honest caveat on a 0.x and a bad look on a
-1.0 PyPI page.
+The table was regenerated from the primary protocol document, verified by the
+byte-value suite in `tests/test_constant_values.py`, and the licence caveat came
+out of the README.
 
-The escape route is already built: `docs/protocol-notes.md` cites the primary
-protocol document for every claim, and `tests/test_constant_values.py` pins every
-byte against it with a citation per assertion. A clean-room regeneration of the
-table from the document is mechanically verifiable by the suite that already
-exists, and the licence caveat paragraph then disappears from the README.
+## Decided before the freeze, and merged
 
-## Decide before the freeze: cheap now, breaking later
+All of these are in
+[readerboard#116](https://github.com/mjaksn/readerboard/pull/116), which is
+merged and goes out as the last breaking 0.x release.
 
-None of these block work, but each is a one-line decision today and a major
-version bump afterward.
-
-- **Is `/v2` the path to be stuck with?** Keep it. Renaming is a breaking change
-  forever after; keeping it costs nothing. Just make it a decision rather than an
-  accident.
 - **Does `refresh_interval_seconds` survive?**
-  ([readerboard#21](https://github.com/mjaksn/readerboard/issues/21)) Spike
-  question 4, whether the sign answers reads through the Ethernet adapter,
-  decides if reconciliation can become read-and-compare instead of a blind
-  re-push. Settings names are frozen surface, so decide whether the timer is the
-  committed design and read-back lands additively later, or whether read-back
-  reshapes it first.
-- **The word "scheduling" in the package description.**
-  ([readerboard#22](https://github.com/mjaksn/readerboard/issues/22)) Reword it.
-  TTL is expiry, not scheduling, and the protocol's own per-file start and stop
-  times are a feature deliberately bypassed with `FFFF`. Fix the word before it
-  sits on a 1.0 PyPI page, or build the feature it promises.
-- **The simple surface's contract.** Keep it exactly as it is.
-  `POST /Write/Message` and its all-200 convention exist for clients that do not
-  change. 1.0 is the last cheap chance to reconsider, and the right
-  reconsideration is none.
-- **The trove of small tag-time flips.** The `Development Status :: 4 - Beta`
-  classifier becomes `5 - Production/Stable`, and the changelog's 0.x caveat
-  about the interface still moving comes out.
+  ([readerboard#21](https://github.com/mjaksn/readerboard/issues/21)) The timer
+  stays and the name does not. Read-back landed under the timer rather than
+  replacing it: with icons in use, each tick reads one picture file back and
+  re-pushes only when that read cannot vouch for the sign. The setting is now
+  `check_interval_seconds`, so the name says what a tick does first.
+- **Should `GET /health` say `ok` while `sign_in_sync` is false?** No. `status`
+  is `degraded` whenever the service knows something it wrote has not reached the
+  sign, as well as when the link is down, so a monitor watching one field sees
+  both. It still cannot see a sign power cycled behind a connected adapter until
+  the next check finds it; nothing can.
+- **Can an alert wait its turn?** Yes. Day-to-day use showed that an alert worth
+  showing eventually, but not worth dismissing the one already up for, is common,
+  and a caller had to keep polling or resending until the sign was free.
+  `fail_if_active` is now `if_active`, with `replace`, `queue` and `fail`, and the
+  service holds queued alerts and shows each when the one before it ends. This is
+  a feature, which the closing note below argues against attaching to 1.0, and it
+  is here anyway for one reason: the field swap is a breaking change, so after the
+  tag it would have waited for 2.0. The queue landed with the swap so that
+  `if_active` never existed with one of its three values missing.
+- **Deadlines have a ceiling.** Reviewing the queue found that a large enough
+  `ttl_seconds` put a deadline past the last date the service can hold, and was a
+  500. Every `ttl_seconds`, and the queue's `max_wait_seconds`, is now at most a
+  year, a bound that could not be added after the tag.
+
+Still to do at tag time: the `Development Status :: 4 - Beta` classifier becomes
+`5 - Production/Stable`, and the changelog's 0.x caveat about the interface still
+moving comes out.
+
+## Decided, and since reversed
+
+The first draft of this page kept the `/v2` prefix and the simple surface
+(`POST /Write/Message` and its all-200 convention) exactly as they were. On
+2026-09-01 backward compatibility was dropped for the rest of 0.x, and 0.3.0
+removed both. Dropping compatibility bought a deletion rather than a redesign: the
+old surface had been kept well apart and never distorted the newer one. The point
+of recording it is that 1.0 is the line after which a reversal like that stops
+being cheap.
 
 ## Safely after 1.0: additive, so let none of it gate the tag
 
-Each of these adds paths or settings without changing existing ones, which makes
-them minor releases under the project's own rules.
-
-- **Read-back reconciliation**, turning the fifteen-minute re-push into a cheap
-  question and comparison, once the spike proves the adapter passes reads.
-- **Multiple or scoped API keys**, such as a read-only key a monitor can hold
-  without being able to write to the sign.
+- **Read-back for a service with no icons**, which still re-pushes on the timer
+  because it has no picture file to ask about.
+- **Multiple or scoped API keys**, such as a key that can write messages but not
+  reboot the sign. Reads and `GET /health` already need no key, so a monitor
+  needs none.
 - **A Home Assistant integration write-up or blueprint**, since the README
   already names it as the natural first client.
 - **New display features**, checked first against the Alpha 1.0 generation
@@ -96,31 +97,26 @@ them minor releases under the project's own rules.
 
 ## The sequence, from here to the tag
 
-1. **Flush the current unreleased work as 0.2.0**
-   ([readerboard#18](https://github.com/mjaksn/readerboard/issues/18)). The
-   simulator, the combined launcher, and the Swagger authorize change are a
-   meaty, coherent release. Ship them and clear the deck.
-2. **Take the spike to the sign**
-   ([readerboard#19](https://github.com/mjaksn/readerboard/issues/19)). One
-   session answers all four open questions and the delay measurement. Update the
-   protocol notes from "not yet confirmed on hardware" to confirmed, simplify
-   the run sequence deferral if question 3 allows, and set the measured delay as
-   the default.
-3. **Regenerate `constants.py` from the protocol document**
-   ([readerboard#20](https://github.com/mjaksn/readerboard/issues/20)).
-   Clean-room, verified by the existing byte-value suite. Drop the licence
-   caveat from the README in the same change.
-4. **Land the freeze decisions**
-   ([readerboard#21](https://github.com/mjaksn/readerboard/issues/21),
-   [readerboard#22](https://github.com/mjaksn/readerboard/issues/22)). Any
-   resulting renames go out as the last breaking 0.x release, so 1.0.0 itself
-   changes nothing.
-5. **Cut `v1.0.0-rc1`**
-   ([readerboard#23](https://github.com/mjaksn/readerboard/issues/23)). The
-   release plumbing already anticipates this: `latest=auto` exists precisely so
-   a prerelease tag does not move `latest`. The rc rehearses the full
-   three-registry pipeline end to end.
-6. **Docs audit, then tag 1.0.0**
+1. ~~Flush the unreleased work as 0.2.0~~ (#18), done 2026-08-30.
+2. ~~Take the spike to the sign~~ (#19), done across September 2026.
+3. ~~Regenerate `constants.py`~~ (#20), done 2026-08-31.
+4. ~~Settle the freeze decisions~~ (#21 and the rest, in #116), merged
+   2026-11-12.
+5. **Fix the two persistence bugs the review found**
+   ([readerboard#117](https://github.com/mjaksn/readerboard/issues/117),
+   [readerboard#118](https://github.com/mjaksn/readerboard/issues/118)). Neither
+   changes the surface, so neither gates the freeze, but an interrupted reboot or
+   a startup with the adapter down should not leave the state file disagreeing
+   with the sign in a release meant to be the stable one.
+6. **Release the last breaking 0.x version**, carrying #116, so that 1.0.0
+   itself changes nothing.
+7. **Cut `v1.0.0-rc1`**
+   ([readerboard#23](https://github.com/mjaksn/readerboard/issues/23)).
+   `latest=auto` exists so a prerelease tag does not move `latest`. The rc
+   rehearses the full pipeline: PyPI, both container registries, the release page
+   and the Docker Hub overview. CI's `rehearsal` job already exercises the GHCR
+   half on every pull request, so the rc mostly proves the parts it cannot.
+8. **Docs audit, then tag 1.0.0**
    ([readerboard#24](https://github.com/mjaksn/readerboard/issues/24)). By the
    project's own convention that prose is part of the product, the audit is the
    final pre-tag step: README, changelog, docstrings, config comments, OpenAPI
@@ -129,9 +125,11 @@ them minor releases under the project's own rules.
 ## Closing note
 
 Resist the temptation to attach features to 1.0. The project's whole character is
-that it does a small thing carefully, and its release machinery, lock files, and
-CI are already more 1.0-ready than most 1.0s. The only things genuinely standing
-between here and the tag are one afternoon in front of the sign and one table of
-bytes with a tidy origin story.
+that it does a small thing carefully. Variables, icons, hiding and the reboot
+route all landed during 0.x, which was the right place for them. The alert queue
+is the one feature attached to the freeze, and only because its request field
+could not change afterwards. What stands between here and the tag now is two
+fixes, one release, one rehearsal and one audit.
 
-*Plan drafted 2026-08-30, at readerboard v0.1.4.*
+*Plan drafted 2026-08-30, at readerboard v0.1.4. Revised 2026-11-12, with the
+freeze decisions merged and v0.8.3 the latest release.*
