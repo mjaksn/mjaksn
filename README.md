@@ -74,10 +74,10 @@ added there is a row checked here.
 
 - nettail: [deps: bump python from 3.14.7-slim to 3.15.0-slim](https://github.com/mjaksn/nettail/pull/88)
 - readerboard: [deps: bump python from 3.14.7-slim to 3.15.0-slim](https://github.com/mjaksn/readerboard/pull/97)
-- toolshed: [ci: bump ruff from 0.17.1 to 0.17.3 in /.github](https://github.com/mjaksn/toolshed/pull/50)
+- toolshed: [ci: bump ruff from 0.17.1 to 0.17.4 in /.github](https://github.com/mjaksn/toolshed/pull/53)
 - toolshed: [ci: bump actions/setup-python from 7.0.0 to 7.1.0](https://github.com/mjaksn/toolshed/pull/45)
 
-<sub>Checked: 2026-11-11 07:33 UTC</sub>
+<sub>Checked: 2026-11-14 07:33 UTC</sub>
 
 <!-- cool:end -->
 
