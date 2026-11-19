@@ -34,12 +34,12 @@ table nobody reads.
 | nettail | 0.22.0 | v0.22.0 | all 28 | none | success | 1 | dependabot/docker/python-3.15.2-slim (+1/-0) | PyPI 0.22.0, GHCR 0.22.0, Docker Hub 0.22.0 |
 | netflume | 0.6.0 | v0.6.0 | all 8 | 9 commits | success | 0 | compile-templates (+4/-9) | PyPI 0.6.0 |
 | lanname | 0.5.0 | v0.5.0 | all 6 | 6 commits | success | 0 | none | PyPI 0.5.0 |
-| readerboard | 0.10.0 | v0.10.0 | all 18 | 1 commit | success | 5 | dependabot/docker/python-3.15.0-slim (+1/-7), dependabot/pip/anyio-gte-4.14.2-and-lt-4.16 (+1/-49), dependabot/pip/fastapi-gte-0.141.1-and-lt-0.163 (+1/-8), dependabot/pip/pytest-gte-9.1.1-and-lt-9.3 (+1/-8), pool-from-sign (+3/-42), starlette-1-7 (+1/-32) | PyPI 0.10.0, GHCR 0.10.0, Docker Hub 0.10.0 |
+| readerboard | 0.10.1 | v0.10.1 | all 19 | none | success | 5 | dependabot/docker/python-3.15.0-slim (+1/-9), dependabot/pip/anyio-gte-4.14.2-and-lt-4.16 (+1/-51), dependabot/pip/fastapi-gte-0.141.1-and-lt-0.163 (+1/-10), dependabot/pip/pytest-gte-9.1.1-and-lt-9.3 (+1/-10), pool-from-sign (+3/-44), starlette-1-7 (+1/-34) | PyPI 0.10.1, GHCR 0.10.1, Docker Hub 0.10.1 |
 | bravia-http-remote | 1.4.0 | v1.4.0 | all 5 | 8 commits | success | 0 | split-app-js (+2/-30) | GHCR 1.4.0, Docker Hub 1.4.0 |
 | cec-ir-bridge | 0.1.4 | v0.1.4 | all 5 | none | success | 0 | none | none |
-| toolshed | none | none | none | n/a | success | 2 | dependabot/github_actions/actions/setup-python-7.1.0 (+1/-6), dependabot/pip/dot-github/ruff-0.17.4 (+1/-0) | none |
+| toolshed | none | none | none | n/a | success | 2 | dependabot/github_actions/actions/setup-python-7.1.0 (+1/-7), dependabot/pip/dot-github/ruff-0.17.4 (+1/-1) | none |
 
-<sub>Generated: 2026-11-17 16:34 UTC</sub>
+<sub>Generated: 2026-11-19 16:11 UTC</sub>
 
 <!-- sweep:end -->
 
