@@ -33,6 +33,12 @@ tag was last pushed, and a tag is pushed again whenever the image behind it
 is rebuilt, so the clock restarts on a rebuild. That can only make an image
 look newer than it is, never older.
 
+A pull request that widens a PyPI requirement, rather than moving a pin,
+names no version at all. It is old enough once every final release the new
+range lets in, and the old range kept out, has been out for the full wait.
+A release that lands inside the range later restarts the clock on the next
+run, which is the conservative way round.
+
 Authentication is `GITHUB_TOKEN` if it is set, and `gh auth token`
 otherwise, so it needs no setup on a machine where gh is already logged in.
 """
@@ -135,11 +141,16 @@ def packages_in(readme: str) -> set[str]:
 
 @dataclass
 class Bump:
-    """One dependency moving from one version to another."""
+    """One dependency moving from one version to another.
+
+    A range bump moves a requirement rather than a pin, so `old` and `new`
+    are specifier sets such as `>=4.14.2,<4.16` rather than versions.
+    """
 
     name: str
     old: str
     new: str
+    ranged: bool = False
 
 
 @dataclass
@@ -154,6 +165,7 @@ class Pull:
 
 BUMP = re.compile(r"[Bb]umps? (\S+) from (\S+) to (\S+)")
 GROUPED = re.compile(r"^Updates `([^`]+)` from (\S+) to (\S+)", re.M)
+RANGE = re.compile(r"[Uu]pdates? (\S+) requirement from (\S+) to (\S+)")
 
 
 def read_pull(repo: str, pull: dict) -> Pull:
@@ -162,15 +174,21 @@ def read_pull(repo: str, pull: dict) -> Pull:
     The ecosystem is the second segment of the branch name, which is the
     only place Dependabot states it in a form a machine can trust. The
     versions are in the title for a single bump and, for a grouped update,
-    one per line in the body. A version string that ends in a full stop is
-    the title's own punctuation, not part of the version.
+    one per line in the body. A pull request that widens a requirement
+    rather than moving a pin says so in its title as well, with the old and
+    new ranges where the versions would be. A version string that ends in a
+    full stop is the title's own punctuation, not part of the version.
     """
     branch = pull["head"]["ref"].split("/")
     ecosystem = branch[1] if len(branch) > 1 else "?"
     out = Pull(repo, pull["number"], pull["title"], pull["html_url"], ecosystem)
     found = BUMP.search(pull["title"])
+    ranged = RANGE.search(pull["title"])
     if found:
         out.bumps.append(Bump(*(part.rstrip(".") for part in found.groups())))
+    elif ranged:
+        name, old, new = ranged.groups()
+        out.bumps.append(Bump(name, old, new.rstrip("."), ranged=True))
     else:
         for name, old, new in GROUPED.findall(pull.get("body") or ""):
             out.bumps.append(Bump(name, old, new.rstrip(".")))
@@ -185,6 +203,103 @@ def released_pypi(name: str, version: str) -> datetime | None:
     stamps = [f["upload_time_iso_8601"] for f in (found or {}).get("urls", [])
               if f.get("upload_time_iso_8601")]
     return min(when(s) for s in stamps) if stamps else None
+
+
+# A range bump that lets in no version the old range kept out has nothing to
+# wait for. This is its release date: old enough for any wait.
+NOTHING_NEW = datetime.min.replace(tzinfo=timezone.utc)
+
+PRE = re.compile(r"(a|b|c|rc|alpha|beta|pre|preview|dev)\d*", re.I)
+FINAL = re.compile(r"^v?(\d+(?:\.\d+)*)(?:[.-]?post(\d+))?$", re.I)
+SPEC = re.compile(r"^(~=|===|==|!=|<=|>=|<|>)\s*(\S+)$")
+
+
+def key(version: str) -> tuple[tuple[int, ...], int] | None:
+    """A final release as something that sorts, or None for anything else.
+
+    Trailing zeros are dropped so that 0.163 and 0.163.0 compare equal, the
+    way PEP 440 has them. A post release sorts just after its base.
+    """
+    found = FINAL.match(version.strip())
+    if not found:
+        return None
+    release = tuple(int(part) for part in found.group(1).split("."))
+    while len(release) > 1 and release[-1] == 0:
+        release = release[:-1]
+    return release, int(found.group(2)) if found.group(2) else -1
+
+
+def admits(specifiers: str, version: str) -> bool:
+    """Whether a final release satisfies a comma-separated specifier set.
+
+    Only the operators Dependabot writes into a range are understood, and
+    an epoch, a local version or anything else unusual raises rather than
+    guessing, so that the pull request is left undated instead of being
+    passed on a misreading.
+    """
+    have = key(version)
+    if have is None:
+        raise ValueError("not a final release: " + version)
+    for clause in filter(None, (part.strip() for part in specifiers.split(","))):
+        found = SPEC.match(clause)
+        if not found:
+            raise ValueError("cannot read the specifier " + clause)
+        op, wanted = found.groups()
+        if op in ("==", "!=") and wanted.endswith(".*"):
+            prefix = tuple(int(part) for part in wanted[:-2].split("."))
+            padded = have[0] + (0,) * len(prefix)
+            ok = padded[:len(prefix)] == prefix
+            if ok != (op == "=="):
+                return False
+            continue
+        bound = key(wanted)
+        if bound is None:
+            raise ValueError("cannot read the version in " + clause)
+        if op == "~=":
+            # ~=X.Y.Z is >=X.Y.Z and ==X.Y.*, read off the version as written.
+            parts = wanted.split(".")
+            prefix = tuple(int(part) for part in parts[:-1])
+            padded = have[0] + (0,) * len(prefix)
+            if have < bound or padded[:len(prefix)] != prefix:
+                return False
+            continue
+        ok = {"==": have == bound, "===": have == bound, "!=": have != bound,
+              "<=": have <= bound, ">=": have >= bound,
+              "<": have < bound, ">": have > bound}[op]
+        if not ok:
+            return False
+    return True
+
+
+def released_pypi_range(name: str, old: str, new: str) -> datetime | None:
+    """When the newest release a widened range lets in came out.
+
+    A range bump does not name a version, so the question is put to every
+    release the new range admits and the old one did not: the pull request
+    is old enough once the youngest of them is. Pre-releases and fully
+    yanked releases are left out, because pip leaves them out of a range
+    too. Upload times are compared rather than version numbers, since a
+    fix to an older line can be published after a newer line.
+    """
+    found = get("https://pypi.org/pypi/%s/json" % urllib.parse.quote(name))
+    if not found:
+        return None
+    latest = NOTHING_NEW
+    for version, files in found.get("releases", {}).items():
+        if PRE.search(version) and not FINAL.match(version):
+            continue
+        files = [f for f in files if not f.get("yanked")]
+        stamps = [f["upload_time_iso_8601"] for f in files
+                  if f.get("upload_time_iso_8601")]
+        if not stamps:
+            continue
+        try:
+            if not admits(new, version) or admits(old, version):
+                continue
+        except ValueError:
+            return None
+        latest = max(latest, min(when(s) for s in stamps))
+    return latest
 
 
 def released_npm(name: str, version: str) -> datetime | None:
@@ -242,6 +357,12 @@ def released_docker(name: str, version: str) -> datetime | None:
 
 
 def released(ecosystem: str, bump: Bump, tok: str) -> datetime | None:
+    if bump.ranged:
+        # Only PyPI ranges are read. Other ecosystems write theirs in syntax
+        # of their own, and an unread range is unknown, not old enough.
+        if ecosystem == "pip":
+            return released_pypi_range(bump.name, bump.old, bump.new)
+        return None
     if ecosystem == "pip":
         return released_pypi(bump.name, bump.new)
     if ecosystem == "npm_and_yarn":
