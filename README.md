@@ -72,16 +72,9 @@ added there is a row checked here.
 
 <!-- cool:start -->
 
-- nettail: [deps: bump python from 3.14.7-slim to 3.15.2-slim](https://github.com/mjaksn/nettail/pull/92)
-- readerboard: [deps: bump python from 3.14.7-slim to 3.15.2-slim](https://github.com/mjaksn/readerboard/pull/128)
-- readerboard: [deps: update fastapi requirement from <0.144,>=0.141.1 to >=0.141.1,<0.163](https://github.com/mjaksn/readerboard/pull/115)
-- readerboard: [deps: update pytest requirement from <9.2,>=9.1.1 to >=9.1.1,<9.3](https://github.com/mjaksn/readerboard/pull/114)
-- readerboard: [deps: update anyio requirement from <4.15,>=4.14.2 to >=4.14.2,<4.16](https://github.com/mjaksn/readerboard/pull/63)
-- bravia-http-remote: [deps: bump python from 3.15.1-slim to 3.15.2-slim](https://github.com/mjaksn/bravia-http-remote/pull/36)
-- toolshed: [ci: bump ruff from 0.17.1 to 0.17.5 in /.github](https://github.com/mjaksn/toolshed/pull/55)
-- toolshed: [ci: bump actions/setup-python from 7.0.0 to 7.1.0](https://github.com/mjaksn/toolshed/pull/45)
+Nothing yet.
 
-<sub>Checked: 2026-11-21 23:30 UTC</sub>
+<sub>Checked: 2026-11-22 00:29 UTC</sub>
 
 <!-- cool:end -->
 
