@@ -34,12 +34,12 @@ table nobody reads.
 | nettail | 0.22.0 | v0.22.0 | all 28 | 1 commit | success | 0 | none | PyPI 0.22.0, GHCR 0.22.0, Docker Hub 0.22.0 |
 | netflume | 0.6.0 | v0.6.0 | all 8 | 9 commits | success | 0 | compile-templates (+4/-9) | PyPI 0.6.0 |
 | lanname | 0.5.0 | v0.5.0 | all 6 | 6 commits | success | 0 | none | PyPI 0.5.0 |
-| readerboard | 0.10.1 | v0.10.1 | all 19 | 6 commits | success | 0 | pool-from-sign (+3/-50) | PyPI 0.10.1, GHCR 0.10.1, Docker Hub 0.10.1 |
+| readerboard | 0.10.1 | v0.10.1 | all 19 | 6 commits | success | 3 | dependabot/pip/fastapi-gte-0.141.1-and-lt-0.166 (+1/-0), dependabot/pip/pytest-asyncio-1.5.0 (+1/-0), dependabot/pip/ruff-gte-0.16.2-and-lt-0.18 (+1/-0), pool-from-sign (+3/-50) | PyPI 0.10.1, GHCR 0.10.1, Docker Hub 0.10.1 |
 | bravia-http-remote | 1.4.0 | v1.4.0 | all 5 | 9 commits | success | 0 | split-app-js (+2/-31) | GHCR 1.4.0, Docker Hub 1.4.0 |
 | cec-ir-bridge | 0.1.4 | v0.1.4 | all 5 | none | success | 0 | none | none |
-| toolshed | none | none | none | n/a | success | 0 | none | none |
+| toolshed | none | none | none | n/a | success | 1 | dependabot/pip/dot-github/ruff-0.17.6 (+1/-0) | none |
 
-<sub>Generated: 2026-11-22 14:58 UTC</sub>
+<sub>Generated: 2026-11-28 15:54 UTC</sub>
 
 <!-- sweep:end -->
 
