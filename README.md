@@ -72,9 +72,12 @@ added there is a row checked here.
 
 <!-- cool:start -->
 
-Nothing yet.
+- readerboard: [deps: bump pytest-asyncio from 1.4.1 to 1.5.0](https://github.com/mjaksn/readerboard/pull/133)
+- readerboard: [deps: update fastapi requirement from <0.163,>=0.141.1 to >=0.141.1,<0.166](https://github.com/mjaksn/readerboard/pull/132)
+- readerboard: [deps: update ruff requirement from <0.17,>=0.16.2 to >=0.16.2,<0.18](https://github.com/mjaksn/readerboard/pull/131)
+- toolshed: [ci: bump ruff from 0.17.5 to 0.17.6 in /.github](https://github.com/mjaksn/toolshed/pull/57)
 
-<sub>Checked: 2026-11-22 00:29 UTC</sub>
+<sub>Checked: 2026-11-28 16:18 UTC</sub>
 
 <!-- cool:end -->
 
